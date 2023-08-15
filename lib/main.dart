@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import './customWidgets/YearRange.dart';
 import './customWidgets/navbar.dart';
-import 'package:flutter/material.dart';
+import './customWidgets/selectArtForm.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -23,7 +24,12 @@ void main() async{
           ),
         ),
       ),
-      body: const YearRange(),
+      body: const Column(
+        children: [
+          SelectArtForm(),
+          YearRange()
+        ],
+      ),
       bottomNavigationBar: const Navbar(),
     ),
   ));
