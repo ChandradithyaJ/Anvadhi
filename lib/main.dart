@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import './customWidgets/navbar.dart';
-import './customWidgets/YearRange.dart';
 
 void main() async{
   /*await Firebase.initializeApp(
@@ -23,7 +22,7 @@ void main() async{
           ),
         ),
       ),
-      body: const YearRange(),
+      body: const Navbar(),
     ),
   ));
 }

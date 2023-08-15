@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'YearRange.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({super.key});
@@ -18,9 +19,14 @@ class _Navbar
       'Home page text',
       style: optionStyle,
     ),
-    Text(
-      'Map',
-      style: optionStyle,
+    Column(
+      children: [
+        Text(
+          'Map',
+          style: optionStyle,
+        ),
+        YearRange()
+      ],
     ),
     Text(
       'Stories text',
