@@ -74,7 +74,7 @@ class Home_screen_culturia extends StatelessWidget {
                           Icons.search,
                           color: Colors.black87,
                         ),
-                        hintText: "GAy  IS MAANNU",
+                        hintText: "search here",
                         hintStyle: TextStyle(color: Colors.pink, fontSize: 20)),
                   ),
                 ),
