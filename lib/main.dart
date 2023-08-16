@@ -43,7 +43,7 @@
 
 import 'package:anvadhi/Side_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:anvadhi/ProfilePage.dart';
+import 'package:anvadhi/ThreeD_Page.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ProfilePage(), // Change this to the desired page widget
+      home: ThreeD_Page(), // Change this to the desired page widget
     );
   }
 }

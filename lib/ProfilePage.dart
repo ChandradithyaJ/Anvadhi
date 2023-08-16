@@ -45,12 +45,12 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           Text(
             user.name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            style:const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
           const SizedBox(height: 4),
           Text(
             user.email,
-            style: TextStyle(color: Colors.grey),
+            style: const TextStyle(color: Colors.grey),
           )
         ],
       );
@@ -58,18 +58,18 @@ class _ProfilePageState extends State<ProfilePage> {
  
 
   Widget buildAbout( user_details user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 48),
+        padding:const EdgeInsets.symmetric(horizontal: 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'About',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             Text(
               user.about,
-              style: TextStyle(fontSize: 16, height: 1.4),
+              style: const TextStyle(fontSize: 16, height: 1.4),
             ),
           ],
         ),
