@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.15.0
   carousel_slider: ^4.0.0
+  routes: ^3.2.0
+  cupertino_stepper: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -62,7 +64,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/image1.jpg
+    - lib/assets/images/image.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
