@@ -43,7 +43,8 @@
 
 import 'package:anvadhi/Side_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:anvadhi/ThreeD_Page.dart';
+
+import 'package:anvadhi/customWidgets/navbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Side_menu(), // Change this to the desired page widget
+      home: Navbar(), // Change this to the desired page widget
     );
   }
 }
