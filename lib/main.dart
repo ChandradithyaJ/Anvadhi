@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ThreeD_Page(), // Change this to the desired page widget
+      home: Side_menu(), // Change this to the desired page widget
     );
   }
 }
