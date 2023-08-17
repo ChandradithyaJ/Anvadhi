@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './customWidgets/YearRange.dart';
 import './customWidgets/navbar.dart';
 import './customWidgets/selectArtForm.dart';
+import './services/map.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -24,9 +25,11 @@ void main() async{
           ),
         ),
       ),
-      body: const Column(
+      body: Column(
         children: [
           SelectArtForm(),
+          SizedBox(height: 10.0,),
+          Map(),
           YearRange()
         ],
       ),
