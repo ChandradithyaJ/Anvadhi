@@ -8,7 +8,7 @@ class YearRange extends StatefulWidget {
 }
 
 class _YearRangeState extends State<YearRange> {
-  RangeValues yearRange = const RangeValues(1500, 2020);
+  RangeValues yearRange = const RangeValues(1500, 2000);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _YearRangeState extends State<YearRange> {
       child: RangeSlider(
         values: yearRange,
         min: 1500,
-        max: 2020,
+        max: 2000,
         divisions: 10,
         labels: RangeLabels(
           yearRange.start.round().toString(),
