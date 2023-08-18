@@ -1,9 +1,21 @@
+import 'package:anvadhi/services/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:anvadhi/main.dart';
 
 class Side_menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+
+       return GestureDetector(
+      onHorizontalDragEnd: (details) {
+        if (details.velocity.pixelsPerSecond.dx > -1) {
+          // Swiped from left to right, navigate to the next page
+          Navigator.of(context).pushNamed(AppRoutes.Sidemenu);
+          print("swiped right");
+        }
+      },
+
+    child: Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
@@ -49,6 +61,7 @@ class Side_menu extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ),
+  );
   }
 }

@@ -78,6 +78,8 @@ flutter:
     - lib/assets/images/town_hall.glb
     - lib/assets/images/source/
     - lib/assets/images/model/
+    - lib/assets/images/model/Model_culturia/
+
     # - lib/assets/images/source/mybot1.jpeg
     # - lib/assets/images/source/mybot3.jpeg
     # - lib/assets/images/source/mybot3.jpg
