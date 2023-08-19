@@ -48,6 +48,11 @@ dependencies:
   url_launcher: ^6.1.12
   geocoding: ^2.1.0
   location_picker_flutter_map: ^1.2.2
+  hidden_drawer_menu: ^3.0.1
+  liquid_pull_to_refresh: ^3.0.0
+  smooth_page_indicator: ^1.0.0
+  lottie: ^1.1.0
+
 
 dev_dependencies:
   flutter_test:

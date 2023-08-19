@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:anvadhi/customWidgets/app_bar.dart';
 import 'package:anvadhi/models/user_details.dart';
 import 'package:anvadhi/utils/Sample_user.dart';
-import "package:anvadhi/customWidgets/profile_Widget.dart";
 import "package:anvadhi/customWidgets/Profile_detaila1.dart";
-import 'package:anvadhi/customWidgets/app_bar.dart';
-import 'package:anvadhi/models/user_details.dart';
-import 'package:anvadhi/utils/Sample_user.dart';
+
 
 
 

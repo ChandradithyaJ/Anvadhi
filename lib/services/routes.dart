@@ -13,9 +13,12 @@ import 'package:anvadhi/Side_menu.dart';
 class AppRoutes {
   static const String home = '/';
   static const String Sidemenu = '/Sidemenu';
+  static const String Profile = '/profile';
+  
 
   static final Map<String, WidgetBuilder> routes = {
     home: (context) => Side_menu(),
     Sidemenu: (context) => ThreeD_Page(),
+    Profile: (context) => ProfilePage(),
   };
 }
