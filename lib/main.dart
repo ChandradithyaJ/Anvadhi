@@ -47,6 +47,7 @@ import 'package:anvadhi/services/routes.dart';
 import 'package:anvadhi/ProfilePage.dart';
 import 'package:anvadhi/onBoard_screens.dart';
 import 'package:anvadhi/animation_try.dart';
+import 'package:anvadhi/Liquid_drop_trying.dart';
 
 
 void main() {
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // initialRoute: AppRoutes.home,
       // routes: AppRoutes.routes,
-      home: Animation_try(), // Change this to the desired page widget
+      home: LiquidDropTrying(), // Change this to the desired page widget
     );
   }
 }

@@ -11,10 +11,10 @@ class LiquidDropTrying extends StatelessWidget {
     return Scaffold(
          backgroundColor: Colors.deepPurple[100],
          body: LiquidPullToRefresh( onRefresh: _refresh,
-        springAnimationDurationInMilliseconds: 10000,
+        springAnimationDurationInMilliseconds: 100,
          color: Colors.deepPurple,
           backgroundColor: Colors.deepPurple[100],
-          height: 10000.0,
+          height: 300.0,
           animSpeedFactor: 2,
           showChildOpacityTransition: true,
 
