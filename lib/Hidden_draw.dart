@@ -5,7 +5,6 @@ import 'package:anvadhi/ThreeD_Page.dart';
 import 'package:anvadhi/Home_screen_culturia.dart';
 import 'package:anvadhi/Home_screen_culturia_artist.dart';
 import 'package:anvadhi/ProfilePage.dart';
-import 'package:anvadhi/Liquid_drop_trying.dart';
 import 'package:anvadhi/animation_try.dart';
 import 'package:anvadhi/onBoard_screens.dart';
 import 'package:anvadhi/Add_post.dart';
@@ -108,7 +107,7 @@ class _Hidden_draww extends State<Hidden_draww> {
               TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
           selectedStyle: TextStyle(color: Colors.orange),
         ),
-        ThreeD_Page(),
+        CombinedPage(),
       ),
         ScreenHiddenDrawer(
         ItemHiddenMenu(

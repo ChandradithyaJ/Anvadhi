@@ -5,10 +5,10 @@ import 'package:anvadhi/Home_screen_culturia.dart';
 import 'package:anvadhi/Home_screen_culturia_artist.dart';
 import 'package:anvadhi/ProfilePage.dart';
 import 'package:anvadhi/Side_menu.dart';
-import 'package:anvadhi/Liquid_drop_trying.dart';
+// import 'package:anvadhi/Liquid_drop_trying.dart';
 import 'package:anvadhi/animation_try.dart';
 import 'package:anvadhi/onBoard_screens.dart';
-import 'package:anvadhi/Liquid_drop_trying.dart';
+// import 'package:anvadhi/Liquid_drop_trying.dart';
 import 'package:anvadhi/Add_post.dart';
 import 'package:anvadhi/Arts_display.dart';
 import 'package:anvadhi/FullScreen.dart';
@@ -45,13 +45,13 @@ class AppRoutes {
           ),
       Sidemenu: (context) => Side_menu(),
       Profile: (context) => ProfilePage(),
-      LiquidDrop: (context) => LiquidDropTrying(),
+      
       Anim: (context) => Animation_try(),
       OnBoard: (context) => OnBoardingScreen(),
       culturia: (context) => Home_screen_culturia(),
       arts: (context) => Home_screen_culturia_artist(),
       Addposts: (context) => Addpost(),
-      ThreeD: (context) => ThreeD_Page(),
+      ThreeD: (context) => CombinedPage(),
       
       Mapping: (context) =>
           MapPage(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
