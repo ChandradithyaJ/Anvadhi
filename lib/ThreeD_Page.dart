@@ -28,9 +28,6 @@ class _CombinedPageState extends State<CombinedPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Combined Animation and 3D'),
-      ),
       body: ListView(
         children: <Widget>[
           GestureDetector(

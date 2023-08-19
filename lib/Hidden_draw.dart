@@ -135,16 +135,36 @@ class _Hidden_draww extends State<Hidden_draww> {
   @override
   Widget build(BuildContext context) {
     return HiddenDrawerMenu(
-      backgroundColorMenu: Colors.teal,
-      backgroundColorAppBar: Colors.teal,
+      backgroundColorMenu: Colors.purple,
+      backgroundColorAppBar: Colors.purple[100],
       screens: _pages,
+      withShadow: true,
       //    typeOpen: TypeOpen.FROM_RIGHT,
       //    disableAppBarDefault: false,
       //    enableScaleAnimin: true,
       //    enableCornerAnimin: true,
       slidePercent: 80.0,
+      enableCornerAnimation: true,
+      enableShadowItensMenu: true,
+      enableScaleAnimation: true,
+      actionsAppBar: [
+        IconButton(
+          icon: Icon(Icons.search,color: Colors.pink,),
+          onPressed: () {
+            print('click search');
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.add,color: Colors.pink,),
+          onPressed: () {
+            print('click add');
+          },
+        )
+      ],
+      
       verticalScalePercent: 80.0,
       contentCornerRadius: 40.0,
+      leadingAppBar: Icon(Icons.menu, color: Colors.pink),
       //    iconMenuAppBar: Icon(Icons.menu),
       //    backgroundContent: DecorationImage((image: ExactAssetImage('assets/bg_news.jpg'),fit: BoxFit.cover),
       //    whithAutoTittleName: true,
