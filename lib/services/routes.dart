@@ -1,24 +1,53 @@
-
+import 'package:anvadhi/Hidden_draw.dart';
 import 'package:anvadhi/ThreeD_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/Home_screen_culturia.dart';
 import 'package:anvadhi/Home_screen_culturia_artist.dart';
 import 'package:anvadhi/ProfilePage.dart';
 import 'package:anvadhi/Side_menu.dart';
-
-
-//mannu add more 
-
+import 'package:anvadhi/Liquid_drop_trying.dart';
+import 'package:anvadhi/animation_try.dart';
+import 'package:anvadhi/onBoard_screens.dart';
+import 'package:anvadhi/Liquid_drop_trying.dart';
+import 'package:anvadhi/customWidgets/MapPage.dart';
 
 class AppRoutes {
+  List<Map<String, dynamic>> ArtForms = [];
+  Map<String, dynamic> selectedArtForm = {};
+  AppRoutes({required this.ArtForms, required this.selectedArtForm});
+
   static const String home = '/';
   static const String Sidemenu = '/Sidemenu';
   static const String Profile = '/profile';
+  static const String LiquidDrop = '/liquid_drop';
+  static const String Anim = '/animation_try';
+  static const String OnBoard = '/onBoard';
+  static const String ThreeD = '/ThreeD';
+  static const String culturia = '/Home_screen_culturia';
+  static const String arts =
+      '/Home_screen_culturia_artist';
+  static const String Mapping = '/MapPage';
+  static const String Smenu = '/HiddenDrawer';
   
 
-  static final Map<String, WidgetBuilder> routes = {
-    home: (context) => Side_menu(),
-    Sidemenu: (context) => ThreeD_Page(),
-    Profile: (context) => ProfilePage(),
-  };
+  Map<String, WidgetBuilder> getRoutes() {
+    Map<String, WidgetBuilder> routes = {
+      home: (context) => Side_menu(),
+      Smenu: (context) => Hidden_draww(
+            ArtForms: ArtForms,
+            selectedArtForm: selectedArtForm,
+          ),
+      Sidemenu: (context) => Side_menu(),
+      Profile: (context) => ProfilePage(),
+      LiquidDrop: (context) => LiquidDropTrying(),
+      Anim: (context) => Animation_try(),
+      OnBoard: (context) => OnBoardingScreen(),
+      culturia: (context) => Home_screen_culturia(),
+      arts:(context) => Home_screen_culturia_artist(),
+      Mapping: (context) =>
+          MapPage(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
+    };
+
+    return routes;
+  }
 }

@@ -1,4 +1,4 @@
-
+import 'package:anvadhi/services/routes.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:flutter/material.dart';
@@ -51,15 +51,15 @@ class Home_screen_culturia extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const Text(
-                  "Chandra and nandha gay",
-                  style: TextStyle(color: Colors.black87, fontSize: 25),
+                  "Culuturia",
+                  style: TextStyle(color: Colors.black87, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 const Text(
-                  "SEX SEX SEX",
-                  style: TextStyle(color: Colors.black87, fontSize: 40),
+                  "The arts hub ",
+                  style: TextStyle(color: Colors.black87, fontSize: 25),
                 ),
                 const SizedBox(
                   height: 20,
@@ -148,13 +148,10 @@ class Home_screen_culturia extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(5))),
                           shadowColor: Colors.lightBlue,
                         ),
-                        onPressed: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    Home_screen_culturia())),
+                        onPressed: () => Navigator.of(context).pushNamed(
+                                    AppRoutes.culturia)), 
                       ),
                     ),
-                  ),
                   const SizedBox(
                     height: 20,
                   ),
