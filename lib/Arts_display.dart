@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:anvadhi/services/routes.dart';
+import 'package:anvadhi/FullScreen.dart';
+
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 //need to add navigation on image tap
@@ -65,9 +66,22 @@ class artListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-
+       
+       //
       onTap: () {
-        Navigator.pushNamed(context, AppRoutes.home);
+      
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+                       builder: (context) => FullScreenImagePage(
+              imageUrls: arts.map((art) => art.imageUrl).toList(),
+              initialPageIndex: arts.indexOf(arts.singleWhere((art) => art.imageUrl == imageUrl)),
+           // title: name,
+              // description: description,
+              // loc: loc,
+            ),
+          ),
+        );
       },
     
     
