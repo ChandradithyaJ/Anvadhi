@@ -43,6 +43,7 @@ dependencies:
   geocoding: ^2.1.0
   location_picker_flutter_map: ^1.2.2
   cloud_firestore: ^4.8.5
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:
