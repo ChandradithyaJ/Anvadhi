@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:anvadhi/customWidgets/promo_card.dart';
 
 
 class LiquidDropTrying extends StatelessWidget {
@@ -25,11 +26,11 @@ class LiquidDropTrying extends StatelessWidget {
                Padding(
                  padding: const EdgeInsets.all(25.0),
                  child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
+                   borderRadius: BorderRadius.circular(20),
                    child: Container(
                      height: 200,
                      width: 200,
-                      color: Colors.deepPurple[200],
+                     color: Colors.deepPurple[200],
                    ),
                  ),
                ),

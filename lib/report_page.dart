@@ -34,7 +34,7 @@ class ReportPageState extends State<ReportPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 251, 211, 211),
-      appBar: AppBar(
+     /* appBar: AppBar(
         backgroundColor: Colors.grey,
         elevation: 0,
         leading: IconButton(
@@ -50,7 +50,7 @@ class ReportPageState extends State<ReportPage> {
           "Reach to us/Report a problem",
           style: TextStyle(color: Colors.black),
         ),
-      ),
+      ),*/
       body: ListView(
         padding: const EdgeInsets.all(20.0),
         children: [

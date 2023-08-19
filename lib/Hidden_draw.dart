@@ -1,17 +1,15 @@
-import 'package:anvadhi/customWidgets/HomePage.dart';
 import 'package:anvadhi/report_page.dart';
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:anvadhi/ThreeD_Page.dart';
-import 'package:flutter/material.dart';
 import 'package:anvadhi/Home_screen_culturia.dart';
 import 'package:anvadhi/Home_screen_culturia_artist.dart';
 import 'package:anvadhi/ProfilePage.dart';
-import 'package:anvadhi/Side_menu.dart';
 import 'package:anvadhi/Liquid_drop_trying.dart';
 import 'package:anvadhi/animation_try.dart';
 import 'package:anvadhi/onBoard_screens.dart';
-import 'package:anvadhi/Liquid_drop_trying.dart';
+import 'package:anvadhi/Add_post.dart';
+import 'package:anvadhi/Arts_display.dart';
 import 'package:anvadhi/customWidgets/MapPage.dart';
 
 class Hidden_draww extends StatefulWidget {
@@ -60,7 +58,7 @@ class _Hidden_draww extends State<Hidden_draww> {
               TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
           selectedStyle: TextStyle(color: Colors.orange),
         ),
-        LiquidDropTrying(),
+        ArtsDisplay()
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
@@ -72,16 +70,16 @@ class _Hidden_draww extends State<Hidden_draww> {
         ),
         ProfilePage(),
       ),
-      ScreenHiddenDrawer(
-        ItemHiddenMenu(
-          name: "Artists",
-          colorLineSelected: Colors.purpleAccent,
-          baseStyle:
-              TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
-          selectedStyle: TextStyle(color: Colors.orange),
-        ),
-        Home_screen_culturia_artist(),
-      ),
+      // ScreenHiddenDrawer(
+      //   ItemHiddenMenu(
+      //     name: "Artists",
+      //     colorLineSelected: Colors.purpleAccent,
+      //     baseStyle:
+      //         TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
+      //     selectedStyle: TextStyle(color: Colors.orange),
+      //   ),
+      //   Home_screen_culturia_artist(),
+      // ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
           name: "Report",
@@ -112,6 +110,26 @@ class _Hidden_draww extends State<Hidden_draww> {
         ),
         ThreeD_Page(),
       ),
+        ScreenHiddenDrawer(
+        ItemHiddenMenu(
+          name: "addpost",
+          colorLineSelected: Colors.purpleAccent,
+          baseStyle:
+              TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
+          selectedStyle: TextStyle(color: Colors.orange),
+        ),
+        Addpost()
+      ),
+      // ScreenHiddenDrawer(
+      //   ItemHiddenMenu(
+      //     name: "onBoard",
+      //     colorLineSelected: Colors.purpleAccent,
+      //     baseStyle:
+      //     TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
+      //     selectedStyle: TextStyle(color: Colors.orange),
+      //   ),
+      //   OnBoardingScreen(),
+      // ),
     ];
   }
 

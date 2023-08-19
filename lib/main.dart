@@ -1,8 +1,7 @@
-import 'package:anvadhi/customWidgets/HomePage.dart';
+import 'package:anvadhi/Add_post.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/Hidden_draw.dart';
 import './customWidgets/MapPage.dart';
-import './customWidgets/navbar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -38,6 +37,9 @@ void main() async {
       primarySwatch: Colors.blue,
     ),
     home: Hidden_draww(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
+     
+    //  home: Addpost(),
+
     // initialRoute: AppRoutes.Smenu,
     // routes: AppRoutes.routes,
   ));

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 Widget promoCard(image, text, progress_percent) {
-  return AspectRatio(
-    aspectRatio: 2.8 / 3,
-    child: Container(
-      margin: EdgeInsets.only(right: 15.0),
-      decoration: BoxDecoration(
-        color: Colors.orange,
-        borderRadius: BorderRadius.circular(10),
-        image: const DecorationImage(
-            fit: BoxFit.cover, image: AssetImage('assets/images/image.jpg')),
-      ),
+  return Container(
+    clipBehavior: Clip.hardEdge,
+    margin: EdgeInsets.only(right: 15.0),
+    decoration: BoxDecoration(
+      color: Colors.orange,
+      borderRadius: BorderRadius.circular(10),
+      image: DecorationImage(fit: BoxFit.cover, image: AssetImage(image)),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
           Container(
@@ -31,11 +31,9 @@ Widget promoCard(image, text, progress_percent) {
             ),
           ),
           SizedBox(
-            height: 80,
+            height: 10,
           ),
-
           Container(
-            
             child: LinearProgressIndicator(
               value: progress_percent,
               backgroundColor: Colors.black,
