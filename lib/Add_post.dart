@@ -28,9 +28,6 @@ class Addpost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Add Post"),
-      ),
       body: AddpostList(),
     );
   }
@@ -94,11 +91,13 @@ class _AddpostListState extends State<AddpostList> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(height: 20),
-              Text(
-                "Add Info",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+              Center(
+                child: Text(
+                  "Add Info",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -155,15 +154,17 @@ class _AddpostListState extends State<AddpostList> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueGrey,
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 40.0,
-                    vertical: 20.0,
+                    horizontal: 50.0,
+                    vertical: 10.0,
                   ),
                 ),
-                child: Text(
-                  "Post",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                child: Center(
+                  child: Text(
+                    "Post",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
