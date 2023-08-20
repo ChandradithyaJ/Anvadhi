@@ -6,11 +6,11 @@ class Side_menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-       return GestureDetector(
+      return GestureDetector(
       onHorizontalDragEnd: (details) {
         if (details.velocity.pixelsPerSecond.dx > -1) {
           // Swiped from left to right, navigate to the next page
-          Navigator.of(context).pushNamed(AppRoutes.Sidemenu);
+          Navigator.of(context).pushNamed(AppRoutes.home);
           print("swiped right");
         }
       },

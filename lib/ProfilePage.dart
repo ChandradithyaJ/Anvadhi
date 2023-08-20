@@ -19,13 +19,16 @@ class _ProfilePageState extends State<ProfilePage> {
      final user = user_Preferences.myUser;
 
     return Scaffold(
-      appBar: buildAppBar(context),
+      // appBar: buildAppBar(context),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
-          ProfileWidget(
-            imagePath: user.imagePath,
-            onClicked: () async {},
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: ProfileWidget(
+              imagePath: user.imagePath,
+              onClicked: () async {},
+            ),
           ),
           const SizedBox(height: 24),
           buildName(user),
