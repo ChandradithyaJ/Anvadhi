@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:io';
 
 void main() {
@@ -44,6 +45,9 @@ class _AddpostListState extends State<AddpostList> {
   final TextEditingController descController = TextEditingController();
   final TextEditingController artTypeController = TextEditingController();
   final ImagePicker _imagePicker = ImagePicker();
+  final TextEditingController artistNameController = TextEditingController();
+  final TextEditingController yearController = TextEditingController();
+
   XFile? _pickedImage;
   List<Post> posts = [];
 
@@ -60,6 +64,8 @@ class _AddpostListState extends State<AddpostList> {
     String location = locationController.text;
     String description = descController.text;
     String artType = artTypeController.text;
+    String year = yearController.text;
+    String artistName = artistNameController.text;
 
     Post newPost = Post(
       name: name,
@@ -68,6 +74,17 @@ class _AddpostListState extends State<AddpostList> {
       artType: artType,
       imagePath: _pickedImage?.path,
     );
+
+    // update in firestore
+    final artFormsRef = FirebaseFirestore.instance.collection('artForms');
+    Map<String, dynamic> createArtFormEntry = {
+      'artName': name,
+      'artistName': artistName,
+      'year': int.tryParse(year),
+      'latlong': location,
+      'description': description,
+    };
+    artFormsRef.doc(name).set(createArtFormEntry, SetOptions(merge: true));
 
     setState(() {
       posts.add(newPost);
@@ -137,6 +154,26 @@ class _AddpostListState extends State<AddpostList> {
                 decoration: InputDecoration(
                   hintText: "Art Type",
                   labelText: "Art Type",
+                  labelStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: artistNameController,
+                decoration: InputDecoration(
+                  hintText: "Artist Name...",
+                  labelText: "Artist Name",
+                  labelStyle: TextStyle(color: Colors.blueGrey),
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: yearController,
+                decoration: InputDecoration(
+                  hintText: "Year in which the art started...",
+                  labelText: "Year of inception",
                   labelStyle: TextStyle(color: Colors.blueGrey),
                   border: OutlineInputBorder(),
                 ),

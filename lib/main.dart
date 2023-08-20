@@ -1,6 +1,4 @@
-import 'package:anvadhi/customWidgets/login_or_register_page.dart';
 import 'package:flutter/material.dart';
-import 'package:anvadhi/Hidden_draw.dart';
 import './customWidgets/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -15,7 +13,7 @@ void main() async {
   List<Map<String, dynamic>> ArtForms = [];
   Map<String, dynamic> selectedArtForm = {};
 
-  /*** fetch art forms **/
+  /*** fetch art forms ***/
   try {
     final artFormsRef = FirebaseFirestore.instance.collection('artForms');
     List<Map<String, dynamic>> allArtForms = [];

@@ -13,7 +13,6 @@ class ArtsDisplay extends StatelessWidget {
  
   const ArtsDisplay({
     super.key,
-    
   });
 
   @override
