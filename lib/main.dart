@@ -1,11 +1,10 @@
-import 'package:anvadhi/Add_post.dart';
+import 'package:anvadhi/customWidgets/login_or_register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/Hidden_draw.dart';
-import './customWidgets/MapPage.dart';
+import './customWidgets/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:anvadhi/services/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,14 +32,10 @@ void main() async {
 
   runApp(MaterialApp(
     title: 'Anvadhi',
+    debugShowCheckedModeBanner: false,
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
-    home: Hidden_draww(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
-
-    //  home: Addpost(),
-
-    // initialRoute: AppRoutes.Smenu,
-    // routes: AppRoutes.routes,
+    home: AuthPage(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
   ));
 }
