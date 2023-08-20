@@ -7,10 +7,12 @@ import 'package:anvadhi/Arts_display.dart';
 
 
 class Home_screen_culturia extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.purple[50],
       body: SafeArea(
           child: ListView(
         children: [
@@ -152,25 +154,25 @@ class Home_screen_culturia extends StatelessWidget {
                       ),
                       Container(
                         child: Center(
-                          child: ElevatedButton(
-                            child: Text('Continue  Button'),
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.grey,
-                              onPrimary: Colors.white,
-                              textStyle: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontStyle: FontStyle.normal),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(5))),
-                              shadowColor: Colors.lightBlue,
-                            ),
-                            onPressed: () => Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        Home_screen_culturia())),
-                          ),
+                          // child: ElevatedButton(
+                            // child: Text('Continue  Button'),
+                            // style: ElevatedButton.styleFrom(
+                            //   primary: Colors.grey,
+                            //   onPrimary: Colors.white,
+                            //   textStyle: const TextStyle(
+                            //       color: Colors.white,
+                            //       fontSize: 25,
+                            //       fontStyle: FontStyle.normal),
+                            //   shape: RoundedRectangleBorder(
+                            //       borderRadius: const BorderRadius.all(
+                            //           Radius.circular(5))),
+                            //   shadowColor: Colors.lightBlue,
+                            // ),
+                            // onPressed: () => Navigator.of(context).push(
+                            //     MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             Home_screen_culturia())),
+                          // ),
                         ),
                       ),
                     ],
