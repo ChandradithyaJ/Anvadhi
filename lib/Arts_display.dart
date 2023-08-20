@@ -74,7 +74,7 @@ class artListItem extends StatelessWidget {
           MaterialPageRoute(
                        builder: (context) => FullScreenImagePage(
               imageUrls: arts.map((art) => art.imageUrl).toList(),
-              initialPageIndex: arts.indexOf(arts.singleWhere((art) => art.imageUrl == imageUrl)),
+              initialPageIndex: arts.indexWhere((art) => art.imageUrl == imageUrl),
            // title: name,
               // description: description,
               // loc: loc,
