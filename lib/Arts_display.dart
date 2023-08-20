@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:anvadhi/FullScreen.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import './services/firestore_images.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 //need to add navigation on image tap
 
@@ -71,7 +73,7 @@ class artListItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-                       builder: (context) => FullScreenImagePage(
+            builder: (context) => FullScreenImagePage(
               imageUrls: arts.map((art) => art.imageUrl).toList(),
               initialPageIndex: arts.indexWhere((art) => art.imageUrl == imageUrl),
            // title: name,
@@ -120,7 +122,6 @@ class artListItem extends StatelessWidget {
         Image.network(
           imageUrl,
           key: _backgroundImageKey,
-          fit: BoxFit.cover,
         ),
       ],
     );
@@ -340,7 +341,7 @@ class RenderPlx extends RenderBox
 }
 
 class art {
-  const art({
+  art({
     required this.name,
     required this.place,
     required this.imageUrl,
@@ -350,41 +351,21 @@ class art {
   final String place;
   final String imageUrl;
 }
-const arts = [
+
+List<art> arts = [
   art(
     name: 'Kalamkari',
     place: 'Andhra Pradesh',
-    imageUrl: 'lib/assets/images/image.jpg',
+    imageUrl: 'kalamkari1.jpg',
   ),
   art(
     name: 'Gatka art',
     place: 'Punjab',
-    imageUrl: 'lib/assets/images/image.jpg',
+    imageUrl: 'kalamkari1.jpg',
   ),
     art(
     name: 'Thang - Lo',
     place: 'Manipur',
-    imageUrl: 'lib/assets/images/image.jpg',
+      imageUrl: 'kalamkari1.jpg',
   ),
-  art(
-    name: 'Thang - Lo',
-    place: 'Manipur',
-    imageUrl: 'lib/assets/images/image.jpg',
-  ),
-  art(
-    name: 'Thang - Lo',
-    place: 'Manipur',
-    imageUrl: 'lib/assets/images/image.jpg',
-  ),
-  art(
-    name: 'Thang - Lo',
-    place: 'Manipur',
-    imageUrl: 'lib/assets/images/image.jpg',
-  ),
-  art(
-    name: 'Thang - Lo',
-    place: 'Manipur',
-    imageUrl: 'lib/assets/images/image.jpg',
-  ),
-  
 ];

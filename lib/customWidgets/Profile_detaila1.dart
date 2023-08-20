@@ -5,9 +5,9 @@ class Profile_detaila1 extends StatelessWidget {
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          buildButton(context, '4.8', 'Skills'),
+          buildButton(context, '2', 'Skills'),
           buildDivider(),
-          buildButton(context, '35', 'Current Courses'),
+          buildButton(context, '0', 'Current Courses'),
         ],
       );
   Widget buildDivider() => Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './services/firestore_images.dart';
 
 class FullScreenImagePage extends StatelessWidget {
   final List<String> imageUrls;
@@ -25,11 +26,10 @@ class FullScreenImagePage extends StatelessWidget {
           return Center(
             child: Column(
               children: [
-                Image.network(
-                  imageUrls[index],
-                  fit: BoxFit.cover,
+                LoadFirebaseStorageImage(
+                  image: imageUrls[index],
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Text(
                   "Title: ",
                   style: TextStyle(fontSize: 20),
