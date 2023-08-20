@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:anvadhi/FullScreen.dart';
-
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 //need to add navigation on image tap
@@ -353,7 +352,7 @@ class art {
 }
 const arts = [
   art(
-    name: 'kalankari',
+    name: 'Kalamkari',
     place: 'Andhra Pradesh',
     imageUrl: 'lib/assets/images/image.jpg',
   ),

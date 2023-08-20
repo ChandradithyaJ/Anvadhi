@@ -111,7 +111,7 @@ class _Hidden_draww extends State<Hidden_draww> {
       ),
         ScreenHiddenDrawer(
         ItemHiddenMenu(
-          name: "addpost",
+          name: "Share art form",
           colorLineSelected: Colors.purpleAccent,
           baseStyle:
               TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),

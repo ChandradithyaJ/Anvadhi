@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geocoding/geocoding.dart';
 import 'dart:io';
 
 void main() {
@@ -59,7 +60,7 @@ class _AddpostListState extends State<AddpostList> {
     });
   }
 
-  void _sendToDatabase() {
+  void _sendToDatabase() async {
     String name = nameController.text;
     String location = locationController.text;
     String description = descController.text;
@@ -77,14 +78,22 @@ class _AddpostListState extends State<AddpostList> {
 
     // update in firestore
     final artFormsRef = FirebaseFirestore.instance.collection('artForms');
+
+    List<Location> locations = await locationFromAddress(location);
+    double lat = 0, lng = 0;
+    if(locations.isNotEmpty){
+      lat = locations[0].latitude;
+      lng = locations[0].longitude;
+    }
+
     Map<String, dynamic> createArtFormEntry = {
       'artName': name,
       'artistName': artistName,
       'year': int.tryParse(year),
-      'latlong': location,
+      'latlong': GeoPoint(lat, lng),
       'description': description,
     };
-    artFormsRef.doc(name).set(createArtFormEntry, SetOptions(merge: true));
+    await artFormsRef.doc(name).set(createArtFormEntry, SetOptions(merge: true));
 
     setState(() {
       posts.add(newPost);
@@ -121,8 +130,8 @@ class _AddpostListState extends State<AddpostList> {
               TextField(
                 controller: nameController,
                 decoration: InputDecoration(
-                  hintText: "Your Name",
-                  labelText: "Name",
+                  hintText: "Art Form Name",
+                  labelText: "Art Form Name...",
                   labelStyle: TextStyle(color: Colors.blueGrey),
                   border: OutlineInputBorder(),
                 ),
