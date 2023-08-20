@@ -1,6 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/customWidgets/promo_card.dart';
+import 'package:anvadhi/customWidgets/promo_card_basic.dart';
+import 'package:anvadhi/Arts_display.dart';
+
+
 
 class Home_screen_culturia extends StatelessWidget {
   @override
@@ -22,16 +26,14 @@ class Home_screen_culturia extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    const Text(
-                      "Chandra and nandha gay",
-                      style: TextStyle(color: Colors.black87, fontSize: 25),
+                    Center(
+                      child: const Text(
+                        "Welcome to World of Cultures!",
+                        style: TextStyle(color: Colors.pink, fontSize: 25),
+                      ),
                     ),
                     const SizedBox(
-                      height: 5,
-                    ),
-                    const Text(
-                      "SEX SEX SEX",
-                      style: TextStyle(color: Colors.black87, fontSize: 40),
+                      height: 15,
                     ),
                     const SizedBox(
                       height: 20,
@@ -39,7 +41,7 @@ class Home_screen_culturia extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                          color: Colors.grey,
+                          color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(15)),
                       child: const TextField(
                         decoration: InputDecoration(
@@ -48,13 +50,13 @@ class Home_screen_culturia extends StatelessWidget {
                               Icons.search,
                               color: Colors.black87,
                             ),
-                            hintText: "GAy  IS MAANNU",
+                            hintText: "Search",
                             hintStyle:
                                 TextStyle(color: Colors.pink, fontSize: 20)),
                       ),
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 25,
                     ),
                   ],
                 ),
@@ -68,12 +70,12 @@ class Home_screen_culturia extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       const Text(
-                        "Bhenchod",
+                        "Explore Arts",
                         style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 13),
+                            fontStyle: FontStyle.italic, fontSize: 28),
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 20,
                       ),
                       Container(
                         height: 200,
@@ -92,16 +94,10 @@ class Home_screen_culturia extends StatelessWidget {
                                 return Row(
                                   children: <Widget>[
                                     Expanded(
-                                        child: promoCard(
+                                        child: promoCardBasic(
                                             'lib/assets/images/image.jpg',
                                             "kalamkari",
                                             0.1)),
-                                    Expanded(
-                                        child: promoCard(
-                                            'lib/assets/images/image.jpg',
-                                            "kalamkari",
-                                            0.2)),
-
                                     // need to work to make promocard popup
                                   ],
                                 ); //need to shift children widget here
@@ -116,9 +112,9 @@ class Home_screen_culturia extends StatelessWidget {
                       Container(
                         child: Center(
                           child: ElevatedButton(
-                            child: const Text('Elevated Button'),
+                            child: const Text('Explore Categories'),
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.grey,
+                              primary: Colors.purple[300],
                               onPrimary: Colors.white,
                               textStyle: const TextStyle(
                                   color: Colors.white,
@@ -131,7 +127,7 @@ class Home_screen_culturia extends StatelessWidget {
                             ),
                             onPressed: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (context) => Placeholder())),
+                                    builder: (context) => ArtsDisplay())),
                           ),
                         ),
                       ),
