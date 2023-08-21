@@ -84,6 +84,7 @@ class _MapPageState extends State<MapPage> {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               DropdownButton(
                 hint: const Text('Art Form'),
@@ -104,6 +105,11 @@ class _MapPageState extends State<MapPage> {
                   );
                 }).toList(),
               ),
+              const SizedBox(width: 10.0,),
+              Text(
+                widget.selectedArtForm['year'].toString()
+              ),
+              const SizedBox(width: 20.0,),
               ElevatedButton(
                 onPressed: (){
                   Navigator.push(

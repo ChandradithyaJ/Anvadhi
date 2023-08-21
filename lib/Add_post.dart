@@ -110,6 +110,8 @@ class _AddpostListState extends State<AddpostList> {
     locationController.clear();
     descController.clear();
     artTypeController.clear();
+
+    Navigator.pop(context);
   }
 
   @override
@@ -199,7 +201,7 @@ class _AddpostListState extends State<AddpostList> {
                 child: const Text("Pick Image"),
                 // Image.network(File(_pickedImage!.path).toString()),
               ),
-              if (!_pickedImage.existsSync() && _pickedImage.lengthSync() == 0) Image.file(File(_pickedImage.path)),
+              if (!_pickedImage.existsSync() || _pickedImage.lengthSync() == 0) Image.file(File(_pickedImage.path)),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _sendToDatabase,
