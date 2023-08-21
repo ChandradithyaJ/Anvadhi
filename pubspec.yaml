@@ -87,7 +87,10 @@ flutter:
   assets:
     - lib/assets/images/google-logo.png
     - lib/assets/images/image.jpg
-
+    - lib/assets/3D models/Logo/
+    # - lib/assets/3D models/Model_1_Base/
+    #- lib/assets/3D models/TownHall/
+    - lib/assets/animations/
     # - lib/assets/images/source/mybot1.jpeg
     # - lib/assets/images/source/mybot3.jpeg
     # - lib/assets/images/source/mybot3.jpg
