@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:anvadhi/customWidgets/promo_card.dart';
 import 'package:anvadhi/Arts_display.dart';
 
 //firebase stuff
@@ -15,6 +14,11 @@ class FireStorageService {
 }
 
 class Home_screen_culturia extends StatefulWidget {
+  Map<String, dynamic> selectedArtForm;
+  List<Map<String, dynamic>> ArtForms;
+
+  Home_screen_culturia({ required this.ArtForms, required this.selectedArtForm }) : super();
+
   @override
   State<Home_screen_culturia> createState() => _Home_screen_culturiaState();
 }
@@ -189,7 +193,10 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                             ),
                             onPressed: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (context) => const ArtsDisplay())),
+                                    builder: (context) =>
+                                      ArtsDisplay(ArtForms: widget.ArtForms,
+                                          selectedArtForm: widget.selectedArtForm)
+                                )),
                           ),
                         ),
                       ),

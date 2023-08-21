@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:anvadhi/FullScreen.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-
-// need to add navigation on image tap
+import './customWidgets/art_details.dart';
 
 class ArtsDisplay extends StatelessWidget {
+
+  Map<String, dynamic> selectedArtForm;
+  List<Map<String, dynamic>> ArtForms;
+
+  ArtsDisplay({ required this.ArtForms, required this.selectedArtForm }) : super();
+
   Future<void> _refresh() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
   }
- 
-  const ArtsDisplay({
-    super.key,
-  });
-  
+
+  Future<void> convertGsToHttps() async {
+    for (var artItem in ArtForms) {
+      if (artItem['image'].startsWith('gs://')) {
+        var gsReference = FirebaseStorage.instance.refFromURL(artItem['image']);
+        var downloadUrl = await gsReference.getDownloadURL();
+        artItem['image'] = downloadUrl;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +43,12 @@ class ArtsDisplay extends StatelessWidget {
           const SizedBox(height: 40),
           const Text("Lets Explore the Art World", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
           const SizedBox(height: 20),
-          for (final art in arts)
+          for (final art in ArtForms)
             artListItem(
-              imageUrl: art.imageUrl,
-              name: art.name,
-              country: art.place,
+              imageUrl: art['image'],
+              name: art['artName'],
+              country: art['location'],
+              selectedArtForm: selectedArtForm,
             ),
         ],
       ),
@@ -49,13 +59,16 @@ class ArtsDisplay extends StatelessWidget {
 }
 
 class artListItem extends StatelessWidget {
+
   artListItem({
     super.key,
     required this.imageUrl,
     required this.name,
     required this.country,
+    required this.selectedArtForm,
   });
 
+  Map<String, dynamic> selectedArtForm;
   final String imageUrl;
   final String name;
   final String country;
@@ -63,28 +76,20 @@ class artListItem extends StatelessWidget {
    
   @override
   Widget build(BuildContext context) {
-    convertGsToHttps();
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FullScreenImagePage(
-
-              imageUrls: arts.map((artForm) => artForm.imageUrl).toList(),
-              initialPageIndex: arts.indexWhere((artForm) => artForm.imageUrl == imageUrl),
-            ),
+            builder: (context) => ArtDetails(artForm: selectedArtForm),
           ),
         );
       },
-    
-    
-    
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
      
-      child: Column(
-        children: [
+        child: Column(
+          children: [
           
            AspectRatio(
             aspectRatio: 5 / 7,
@@ -151,7 +156,7 @@ class artListItem extends StatelessWidget {
                   width: MediaQuery.of(context)
                       .size
                       .width,
-                  child: CircularProgressIndicator(),
+                  child: const CircularProgressIndicator(),
                 );
               } else {
               // CircularProgressIndicator();
@@ -373,47 +378,5 @@ class RenderPlx extends RenderBox
         (background.parentData as PlxParentData).offset +
             offset +
             Offset(0.0, childRect.top));
-  }
-}
-
-class art {
-  art({
-    required this.name,
-    required this.place,
-    required this.imageUrl,
-  });
-
-  final String name;
-  final String place;
-     String imageUrl;
-  
-}
-
-List<art> arts = [
-  art(
-    name: 'Kalamkari',
-    place: 'Andhra Pradesh',
-    imageUrl: 'kalamkari1.jpg',
-  ),
-  art(
-    name: 'Gatka',
-    place: 'Punjab',
-    imageUrl: 'gatka2.jpeg',
-  ),
-    art(
-    name: 'Thang-Lo',
-    place: 'Manipur',
-    imageUrl: 'Thang-Ta1.jpg',
-  )
-];
-
-
-Future<void> convertGsToHttps() async {
-  for (var artItem in arts) {
-    if (artItem.imageUrl.startsWith('gs://')) {
-      var gsReference = FirebaseStorage.instance.refFromURL(artItem.imageUrl);
-      var downloadUrl = await gsReference.getDownloadURL();
-      artItem.imageUrl = downloadUrl;
-    }
   }
 }

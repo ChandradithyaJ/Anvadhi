@@ -31,7 +31,9 @@ class _ProfilePageState extends State<ProfilePage> {
               Text(
                 user?.displayName ?? 'Guest user',
                 style: const TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 24),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                ),
               )
             ],
           ),

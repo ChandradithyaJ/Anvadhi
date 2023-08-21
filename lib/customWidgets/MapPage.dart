@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flutter_map/plugin_api.dart';
+import './art_details.dart';
 
 class MapPage extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
@@ -82,24 +83,42 @@ class _MapPageState extends State<MapPage> {
       margin: const EdgeInsets.fromLTRB(0, 13.0, 0, 0),
       child: Column(
         children: [
-          DropdownButton(
-            hint: const Text('Art Form'),
-            value: widget.selectedArtForm['artName'],
-            onChanged: (newVal) {
-              if (newVal != null) {
-                setState(() {
-                  changedDropdown = true;
-                  widget.selectedArtForm = widget.ArtForms.firstWhere(
-                      (element) => element['artName'] == newVal);
-                });
-              }
-            },
-            items: currentArtForms.map((af) {
-              return DropdownMenuItem(
-                value: af['artName'],
-                child: Text('${af['artName']}'),
-              );
-            }).toList(),
+          Row(
+            children: [
+              DropdownButton(
+                hint: const Text('Art Form'),
+                value: widget.selectedArtForm['artName'],
+                onChanged: (newVal) {
+                  if (newVal != null) {
+                    setState(() {
+                      changedDropdown = true;
+                      widget.selectedArtForm = widget.ArtForms.firstWhere(
+                          (element) => element['artName'] == newVal);
+                    });
+                  }
+                },
+                items: currentArtForms.map((af) {
+                  return DropdownMenuItem(
+                    value: af['artName'],
+                    child: Text('${af['artName']}'),
+                  );
+                }).toList(),
+              ),
+              ElevatedButton(
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ArtDetails(artForm: widget.selectedArtForm),
+                    ),
+                  );
+                },
+                child: const Icon(
+                  Icons.arrow_circle_right_outlined,
+                  semanticLabel: 'Learn',
+                ),
+              )
+            ],
           ),
 
           /** Flutter Map **/

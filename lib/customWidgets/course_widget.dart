@@ -48,14 +48,14 @@ class CourseWidget extends StatelessWidget {
           Container(
             height: MediaQuery.of(context).size.height * 0.4, // 40% of device height
             child: Padding(
-              padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: course.images.length,
                 itemBuilder: (context, index) {
                   return Container(
                     width: MediaQuery.of(context).size.width * 0.4,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                     ),
                     child: FittedBox(
@@ -91,9 +91,9 @@ class CourseWidget extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(course.instructors.join(", ")),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 Text(
                   'Location:',
                   style: TextStyle(
@@ -101,7 +101,7 @@ class CourseWidget extends StatelessWidget {
                     fontSize: 18,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(course.location),
               ],
             ),

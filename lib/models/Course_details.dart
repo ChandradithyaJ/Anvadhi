@@ -3,6 +3,7 @@ class Course {
   final String courseName;
   final String description;
   final List<String> images;
+  final List<String> imageDescription;
   final List<String> instructors;
   final String location;
 
@@ -11,6 +12,7 @@ class Course {
     required this.courseName,
     required this.description,
     required this.images,
+    required this.imageDescription,
     required this.instructors,
     required this.location,
   });
