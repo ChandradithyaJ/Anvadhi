@@ -114,11 +114,14 @@ class _Hidden_draww extends State<Hidden_draww> {
         IconButton(
           icon: const Icon(Icons.search,color: Colors.pink,),
           onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ArtsDisplay(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm)));
+
           },
         ),
         IconButton(
           icon: const Icon(Icons.add,color: Colors.pink,),
           onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => AddpostList(ArtForms: widget.ArtForms)));
           },
         )
       ],
