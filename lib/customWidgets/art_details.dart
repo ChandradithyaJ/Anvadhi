@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../services/firestore_images.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:anvadhi/User.dart' as currentUser;
 
 class ArtDetails extends StatelessWidget {
   Map<String, dynamic> artForm = {};
@@ -69,7 +72,23 @@ class ArtDetails extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () async {
+                try{
+                  String uid = FirebaseAuth.instance.currentUser!.uid;
+                  currentUser.bookmarks.add(artForm['artName']);
+                  await FirebaseFirestore.instance.collection('users').doc(uid).update({
+                    'bookmarks': currentUser.bookmarks
+                  });
+                } catch (err) {
+                  print('Error adding bookmark: $err');
+                }
+              },
+              child: Icon(
+                Icons.bookmark_add_outlined
+              ),
+            )
           ],
         ),
       ),

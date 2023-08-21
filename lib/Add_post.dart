@@ -199,7 +199,6 @@ class _AddpostListState extends State<AddpostList> {
               ElevatedButton(
                 onPressed: _pickImage,
                 child: const Text("Pick Image"),
-                // Image.network(File(_pickedImage!.path).toString()),
               ),
               if (!_pickedImage.existsSync() || _pickedImage.lengthSync() == 0) Image.file(File(_pickedImage.path)),
               const SizedBox(height: 20),
@@ -236,7 +235,7 @@ class _AddpostListState extends State<AddpostList> {
                         Text("Description: ${post.description}"),
                       ],
                     ),
-                    trailing: post.imagePath != null
+                    trailing: post.imagePath != ''
                         ? Image.file(File(post.imagePath!))
                         : null,
                   );

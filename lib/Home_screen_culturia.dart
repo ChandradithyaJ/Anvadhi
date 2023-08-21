@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/Arts_display.dart';
+import 'package:anvadhi/User.dart' as currentUser;
 
 //firebase stuff
 import 'package:firebase_storage/firebase_storage.dart';
@@ -40,6 +41,10 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
 
     // store all the images in a list
     List<String> artFormPics = widget.ArtForms.map((artForm) => artForm['image'].toString()).toList();
+    List<String> bookmarked = [];
+    for(dynamic artForm in widget.ArtForms){
+      if(currentUser.bookmarks.contains(artForm['artName'])) bookmarked.add(artForm['image']);
+    }
 
     return Scaffold(
       backgroundColor: Colors.purple[50],
@@ -132,9 +137,6 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                         builder: (context, snapshot) {
                                           if (snapshot.connectionState ==
                                               ConnectionState.done) {
-                                            // if (snapshot.hasError) {
-                                            //   return SomethingWentWrong();
-                                            // }
                                             return Container(
                                               height: MediaQuery.of(context)
                                                       .size
@@ -178,7 +180,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                       Container(
                         child: Center(
                           child: ElevatedButton(
-                            child: const Text('Explore Categories'),
+                            child: const Text('Bookmarked'),
                             style: ElevatedButton.styleFrom(
                               primary: Colors.purple[300],
                               onPrimary: Colors.white,
@@ -206,48 +208,60 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                       Container(
                         height: 200,
                         child: ListView(
-                          scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            FutureBuilder(
-                              future: _getImage(context,
-                              'kalamkari1.jpg'),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.done) {
-                                  // if (snapshot.hasError) {
-                                  //   return SomethingWentWrong();
-                                  // }
-                                  return Container(
-                                    height: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .height / 1.25,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width / 1.25,
-                                    child: snapshot.data,
-                                  );
-                                } else if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return Container(
-                                    height: MediaQuery.of(context)
-                                        .size
-                                        .height /
-                                        1.25,
-                                    width: MediaQuery.of(context)
-                                        .size
-                                        .width /
-                                        1.25,
-                                    child:
-                                    CircularProgressIndicator(),
-                                  );
-                                } else {
-                                  // CircularProgressIndicator();
-                                  return Container();
-                                }
-                              }
-                            ),
+                            CarouselSlider.builder(
+                        options: CarouselOptions(
+                          height: 200,
+                          scrollDirection: Axis.horizontal,
+                          autoPlay: true,
+                          enlargeCenterPage: true,
+                          autoPlayInterval: const Duration(seconds: 200),
+                        ),
+                        itemCount: bookmarked.length,
+                        itemBuilder: (context, index, realIndex) {
+                          return Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: FutureBuilder(
+                                  future: _getImage(context,
+                                      bookmarked[index]),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.done) {
+                                      return Container(
+                                        height: MediaQuery.of(context)
+                                            .size
+                                            .height /
+                                            1.25,
+                                        width: MediaQuery.of(context)
+                                            .size
+                                            .width /
+                                            1.25,
+                                        child: snapshot.data,
+                                      );
+                                    } else if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return Container(
+                                        height: MediaQuery.of(context)
+                                            .size
+                                            .height/1.25,
+                                        width: MediaQuery.of(context)
+                                            .size
+                                            .width/1.25,
+                                        child:
+                                        const CircularProgressIndicator(),
+                                      );
+                                    } else {
+                                      // CircularProgressIndicator();
+                                      return Container();
+                                    }
+                                  },
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                           ],
                         ),
                       ),

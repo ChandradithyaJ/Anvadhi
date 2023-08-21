@@ -2,6 +2,7 @@ import 'package:anvadhi/customWidgets/profile_Widget.dart';
 import 'package:flutter/material.dart';
 import "package:anvadhi/customWidgets/Profile_detaila1.dart";
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:anvadhi/User.dart' as currentUser;
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -11,7 +12,9 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    print(currentUser.bookmarks);
     final user = FirebaseAuth.instance.currentUser;
+    String? displayName = currentUser.displayName != '' ? currentUser.displayName : user?.displayName;
     String defaultImage = 'https://www.shutterstock.com/image-illustration/landscape-illustration-game-breath-wild-wallpaper-2216058639';
 
     return Scaffold(
@@ -29,7 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Column(
             children: [
               Text(
-                user?.displayName ?? 'Guest user',
+                displayName ?? 'Guest user',
                 style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,

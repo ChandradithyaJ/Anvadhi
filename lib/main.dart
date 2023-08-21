@@ -32,7 +32,7 @@ void main() async {
     title: 'Anvadhi',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-      primarySwatch: Colors.blue,
+      scaffoldBackgroundColor: Colors.purpleAccent[100]
     ),
     home: AuthPage(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
   ));

@@ -4,6 +4,8 @@ import '../components/my_textfield.dart';
 import '../components//my_button.dart';
 import '../components/square_tile.dart';
 import '../services/auth_services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:anvadhi/User.dart' as currentUser;
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -15,6 +17,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   // text editing controllers
+  final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
@@ -36,6 +39,28 @@ class _RegisterPageState extends State<RegisterPage> {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: emailController.text,
             password: passwordController.text);
+        Map<String, dynamic> user = {
+          'uid': FirebaseAuth.instance.currentUser?.uid,
+          'bookmarks': [],
+          'displayName': usernameController.text,
+          'email': emailController.text
+        };
+        String? uid = FirebaseAuth.instance.currentUser?.uid;
+        await FirebaseFirestore.instance.collection('users').doc(uid).set(user, SetOptions(merge: true));
+
+        final usersRef = FirebaseFirestore.instance.collection('users');
+        List<Map<String, dynamic>> allUsers = [];
+        await usersRef.get().then((snapshot) => {
+          snapshot.docs.forEach((element) {
+            allUsers.add(element.data());
+          })
+        });
+        Map<String, dynamic> reqUser = allUsers.firstWhere((element) => element['uid'] == FirebaseAuth.instance.currentUser?.uid);
+
+        currentUser.displayName = reqUser['displayName'];
+        currentUser.bookmarks = reqUser['bookmarks'];
+        currentUser.uid = FirebaseAuth.instance.currentUser?.uid;
+        currentUser.email = emailController.text;
       } else {
         showErrorMessage("Passwords don't match");
       }
@@ -73,15 +98,12 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 25),
-
               // logo
               const Icon(
                 Icons.lock,
                 size: 50,
               ),
-
               const SizedBox(height: 25),
-
               // Let's create an account for you!
               Text(
                 "Let's create an account for you!",
@@ -95,8 +117,17 @@ class _RegisterPageState extends State<RegisterPage> {
 
               // username textfield
               MyTextField(
+                controller: usernameController,
+                hintText: 'Username...',
+                obscureText: false,
+              ),
+
+              const SizedBox(height: 25),
+
+              // email textfield
+              MyTextField(
                 controller: emailController,
-                hintText: 'Email',
+                hintText: 'Email...',
                 obscureText: false,
               ),
 
@@ -105,7 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
               // password textfield
               MyTextField(
                 controller: passwordController,
-                hintText: 'Password',
+                hintText: 'Password...',
                 obscureText: true,
               ),
 
@@ -114,7 +145,7 @@ class _RegisterPageState extends State<RegisterPage> {
               //confirm password textfield
               MyTextField(
                 controller: confirmPasswordController,
-                hintText: 'Confirm Password',
+                hintText: 'Confirm Password...',
                 obscureText: true,
               ),
 
@@ -167,7 +198,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       onTap: () => AuthService().signInWithGoogle(),
                       imagePath: 'lib/assets/images/google-logo.png'),
 
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
                 ],
               ),
 

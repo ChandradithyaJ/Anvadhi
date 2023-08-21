@@ -4,6 +4,8 @@ import '../components/my_textfield.dart';
 import '../components//my_button.dart';
 import '../components/square_tile.dart';
 import '../services/auth_services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:anvadhi/User.dart' as currentUser;
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -34,6 +36,20 @@ class _LoginPageState extends State<LoginPage> {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text);
+      final usersRef = FirebaseFirestore.instance.collection('users');
+      List<Map<String, dynamic>> allUsers = [];
+      await usersRef.get().then((snapshot) => {
+        snapshot.docs.forEach((element) {
+          allUsers.add(element.data());
+        })
+      });
+      print(currentUser.bookmarks);
+      Map<String, dynamic> reqUser = allUsers.firstWhere((element) => element['uid'] == FirebaseAuth.instance.currentUser?.uid);
+
+      currentUser.displayName = reqUser['displayName'];
+      currentUser.bookmarks = reqUser['bookmarks'];
+      currentUser.uid = FirebaseAuth.instance.currentUser?.uid;
+      currentUser.email = emailController.text;
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
