@@ -4,6 +4,7 @@ import 'package:anvadhi/Home_screen_culturia.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:anvadhi/BoardingPage3.dart';
+import 'packgae:anavdhi/Services/routes.dart;
 
 
 class OnBoardingScreen extends StatefulWidget {
@@ -104,11 +105,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                               },
                             child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              Home_screen_culturia()));
+                                  Navigator.pushNamed(context,Approutes.Smenu);
                                     
 
                                 },
