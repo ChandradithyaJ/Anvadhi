@@ -35,10 +35,12 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
     );
   }
 
-  List<String> artFormPics = ['kalamkari1.jpg', 'gatka2.jpeg', 'manjusha1.jpg', 'Thang-Ta1.jpg'];
-
   @override
   Widget build(BuildContext context) {
+
+    // store all the images in a list
+    List<String> artFormPics = widget.ArtForms.map((artForm) => artForm['image'].toString()).toList();
+
     return Scaffold(
       backgroundColor: Colors.purple[50],
       body: SafeArea(
@@ -117,7 +119,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                 scrollDirection: Axis.horizontal,
                                 autoPlay: true,
                                 enlargeCenterPage: true,
-                                autoPlayInterval: Duration(seconds: 200),
+                                autoPlayInterval: const Duration(seconds: 200),
                               ),
                               itemCount: artFormPics.length,
                               itemBuilder: (context, index, realIndex) {
@@ -149,14 +151,12 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                             return Container(
                                               height: MediaQuery.of(context)
                                                       .size
-                                                      .height /
-                                                  1.25,
+                                                      .height/1.25,
                                               width: MediaQuery.of(context)
                                                       .size
-                                                      .width /
-                                                  1.25,
+                                                      .width/1.25,
                                               child:
-                                                  CircularProgressIndicator(),
+                                                  const CircularProgressIndicator(),
                                             );
                                           } else {
                                             // CircularProgressIndicator();
@@ -253,29 +253,6 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                       ),
                       const SizedBox(
                         height: 20,
-                      ),
-                      Container(
-                        child: const Center(
-                            // child: ElevatedButton(
-                            // child: Text('Continue  Button'),
-                            // style: ElevatedButton.styleFrom(
-                            //   primary: Colors.grey,
-                            //   onPrimary: Colors.white,
-                            //   textStyle: const TextStyle(
-                            //       color: Colors.white,
-                            //       fontSize: 25,
-                            //       fontStyle: FontStyle.normal),
-                            //   shape: RoundedRectangleBorder(
-                            //       borderRadius: const BorderRadius.all(
-                            //           Radius.circular(5))),
-                            //   shadowColor: Colors.lightBlue,
-                            // ),
-                            // onPressed: () => Navigator.of(context).push(
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             Home_screen_culturia())),
-                            // ),
-                            ),
                       ),
                     ],
                   )),
