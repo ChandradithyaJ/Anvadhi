@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:anvadhi/FullScreen.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-//need to add navigation on image tap
+// need to add navigation on image tap
 
 class ArtsDisplay extends StatelessWidget {
   Future<void> _refresh() async {
@@ -32,11 +31,8 @@ class ArtsDisplay extends StatelessWidget {
        child: SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 20),
-      
-          const SizedBox(height: 20),
-
-          Text("Lets Explore the Art World", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+          const SizedBox(height: 40),
+          const Text("Lets Explore the Art World", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
           const SizedBox(height: 20),
           for (final art in arts)
             artListItem(
@@ -60,7 +56,7 @@ class artListItem extends StatelessWidget {
     required this.country,
   });
 
-  String imageUrl;
+  final String imageUrl;
   final String name;
   final String country;
   final GlobalKey _backgroundImageKey = GlobalKey();
@@ -70,7 +66,6 @@ class artListItem extends StatelessWidget {
     convertGsToHttps();
     return GestureDetector(
       onTap: () {
-      
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -92,7 +87,7 @@ class artListItem extends StatelessWidget {
         children: [
           
            AspectRatio(
-            aspectRatio: 16 / 9,
+            aspectRatio: 5 / 7,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Stack(
@@ -111,6 +106,18 @@ class artListItem extends StatelessWidget {
   }
 
   Widget _buildPlxBackground(BuildContext context) {
+    final storage = FirebaseStorage.instance;
+
+    Future<Widget> _getImage(BuildContext context, String image) async {
+      final ref = storage.ref().child(imageUrl);
+      final downloadUrl = await ref.getDownloadURL();
+      return Image.network(
+        downloadUrl,
+        key: _backgroundImageKey,
+        fit: BoxFit.fill,
+      );
+    }
+
     return Flow(
       delegate: PlxFlowDelegate(
         scrollable: Scrollable.of(context),
@@ -118,9 +125,39 @@ class artListItem extends StatelessWidget {
         backgroundImageKey: _backgroundImageKey,
       ),
       children: [
-        Image.network(
-          imageUrl,
-          key: _backgroundImageKey,
+        FutureBuilder(
+          future: _getImage(context, imageUrl),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState ==
+            ConnectionState.done) {
+            // if (snapshot.hasError) {
+            //   return SomethingWentWrong();
+            // }
+              return Container(
+                height: MediaQuery.of(context)
+                    .size
+                    .height,
+                width: MediaQuery.of(context)
+                    .size
+                    .width,
+                child: snapshot.data,
+                );
+              } else if (snapshot.connectionState ==
+                ConnectionState.waiting) {
+                return Container(
+                  height: MediaQuery.of(context)
+                      .size
+                      .height,
+                  width: MediaQuery.of(context)
+                      .size
+                      .width,
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+              // CircularProgressIndicator();
+                return Container();
+              }
+            },
         ),
       ],
     );
