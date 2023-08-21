@@ -1,8 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:anvadhi/FullScreen.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import './services/firestore_images.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 //need to add navigation on image tap
@@ -15,9 +15,11 @@ class ArtsDisplay extends StatelessWidget {
   const ArtsDisplay({
     super.key,
   });
+  
 
   @override
   Widget build(BuildContext context) {
+    convertGsToHttps();
     return Scaffold(
         body: LiquidPullToRefresh( onRefresh: _refresh,
         springAnimationDurationInMilliseconds: 1000,
@@ -58,13 +60,16 @@ class artListItem extends StatelessWidget {
     required this.country,
   });
 
-  final String imageUrl;
+   String imageUrl;
   final String name;
   final String country;
   final GlobalKey _backgroundImageKey = GlobalKey();
-
+    
+    
+   
   @override
   Widget build(BuildContext context) {
+  convertGsToHttps();
     return GestureDetector(
        
        //
@@ -74,6 +79,7 @@ class artListItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => FullScreenImagePage(
+
               imageUrls: arts.map((art) => art.imageUrl).toList(),
               initialPageIndex: arts.indexWhere((art) => art.imageUrl == imageUrl),
            // title: name,
@@ -349,14 +355,15 @@ class art {
 
   final String name;
   final String place;
-  final String imageUrl;
+     String imageUrl;
+  
 }
 
 List<art> arts = [
   art(
     name: 'Kalamkari',
     place: 'Andhra Pradesh',
-    imageUrl: 'kalamkari1.jpg',
+    imageUrl: 'DALL·E 2023-08-19 11.08.34 - culture of india.png',
   ),
   art(
     name: 'Gatka art',
@@ -366,6 +373,17 @@ List<art> arts = [
     art(
     name: 'Thang - Lo',
     place: 'Manipur',
-      imageUrl: 'kalamkari1.jpg',
-  ),
+    imageUrl: 'DALL·E 2023-08-19 11.08.34 - culture of india.png',
+  )
 ];
+
+
+Future<void> convertGsToHttps() async {
+  for (var artItem in arts) {
+    if (artItem.imageUrl.startsWith('gs://')) {
+      var gsReference = FirebaseStorage.instance.refFromURL(artItem.imageUrl);
+      var downloadUrl = await gsReference.getDownloadURL();
+      artItem.imageUrl = downloadUrl;
+    }
+  }
+}
