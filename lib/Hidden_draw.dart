@@ -74,7 +74,7 @@ class _Hidden_draww extends State<Hidden_draww> {
             TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
             selectedStyle: const TextStyle(color: Colors.orange),
           ),
-          Addpost()
+          AddpostList(ArtForms: widget.ArtForms)
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
