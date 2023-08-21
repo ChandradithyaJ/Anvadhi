@@ -1,20 +1,10 @@
-import 'package:anvadhi/fireStoreImages.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/customWidgets/promo_card.dart';
-import 'package:anvadhi/customWidgets/promo_card_basic.dart';
 import 'package:anvadhi/Arts_display.dart';
 
 //firebase stuff
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'firebase_options.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp());
-}
 
 class FireStorageService {
   FireStorageService._();
@@ -35,12 +25,13 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
   Future<Widget> _getImage(BuildContext context, String image) async {
     final ref = storage.ref().child(image);
     final downloadUrl = await ref.getDownloadURL();
-    print(downloadUrl);
     return Image.network(
       downloadUrl,
       fit: BoxFit.scaleDown,
     );
   }
+
+  List<String> artFormPics = ['kalamkari1.jpg', 'gatka2.jpeg', 'manjusha1.jpg', 'Thang-Ta1.jpg'];
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +52,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Center(
+                    const Center(
                       child: Text(
                         "Welcome to World of Cultures!",
                         style: TextStyle(color: Colors.pink, fontSize: 25),
@@ -74,7 +65,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                       height: 20,
                     ),
                     Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                           color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(15)),
@@ -85,7 +76,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                               Icons.search,
                               color: Colors.black87,
                             ),
-                            hintText: "Search",
+                            hintText: "Search...",
                             hintStyle:
                                 TextStyle(color: Colors.pink, fontSize: 20)),
                       ),
@@ -96,7 +87,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
@@ -124,18 +115,14 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                 enlargeCenterPage: true,
                                 autoPlayInterval: Duration(seconds: 200),
                               ),
-                              itemCount: 12,
+                              itemCount: artFormPics.length,
                               itemBuilder: (context, index, realIndex) {
                                 return Row(
                                   children: <Widget>[
                                     Expanded(
-                                      //     child: promoCardBasic(
-                                      //         'lib/assets/images/image.jpg',
-                                      //         "kalamkari",
-                                      //         0.1)
                                       child: FutureBuilder(
                                         future: _getImage(context,
-                                            'Thang-Ta1.jpg'),
+                                            artFormPics[index]),
                                         builder: (context, snapshot) {
                                           if (snapshot.connectionState ==
                                               ConnectionState.done) {
@@ -195,18 +182,18 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                   color: Colors.white,
                                   fontSize: 25,
                                   fontStyle: FontStyle.normal),
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5))),
                               shadowColor: Colors.lightBlue,
                             ),
                             onPressed: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (context) => ArtsDisplay())),
+                                    builder: (context) => const ArtsDisplay())),
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(
@@ -214,12 +201,50 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            promoCard('lib/assets/images/image.jpg',
-                                "kalamkari", 0.1),
+                            FutureBuilder(
+                              future: _getImage(context,
+                              'kalamkari1.jpg'),
+                              builder: (context, snapshot) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.done) {
+                                  // if (snapshot.hasError) {
+                                  //   return SomethingWentWrong();
+                                  // }
+                                  return Container(
+                                    height: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .height / 1.25,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width / 1.25,
+                                    child: snapshot.data,
+                                  );
+                                } else if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Container(
+                                    height: MediaQuery.of(context)
+                                        .size
+                                        .height /
+                                        1.25,
+                                    width: MediaQuery.of(context)
+                                        .size
+                                        .width /
+                                        1.25,
+                                    child:
+                                    CircularProgressIndicator(),
+                                  );
+                                } else {
+                                  // CircularProgressIndicator();
+                                  return Container();
+                                }
+                              }
+                            ),
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Container(

@@ -30,16 +30,16 @@ class FullScreenImagePage extends StatelessWidget {
                   image: imageUrls[index],
                 ),
                 const SizedBox(height: 50),
-                Text(
+                const Text(
                   "Title: ",
                   style: TextStyle(fontSize: 20),
                 ),
-                SizedBox(height: 50),
-                Text(
+                const SizedBox(height: 50),
+                const Text(
                   "description",
                   style: TextStyle(fontSize: 20),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Text(
                   "loc",
                   style: TextStyle(fontSize: 20),

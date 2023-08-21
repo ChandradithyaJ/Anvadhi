@@ -60,19 +60,15 @@ class artListItem extends StatelessWidget {
     required this.country,
   });
 
-   String imageUrl;
+  String imageUrl;
   final String name;
   final String country;
   final GlobalKey _backgroundImageKey = GlobalKey();
-    
-    
    
   @override
   Widget build(BuildContext context) {
-  convertGsToHttps();
+    convertGsToHttps();
     return GestureDetector(
-       
-       //
       onTap: () {
       
         Navigator.push(
@@ -80,11 +76,8 @@ class artListItem extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => FullScreenImagePage(
 
-              imageUrls: arts.map((art) => art.imageUrl).toList(),
-              initialPageIndex: arts.indexWhere((art) => art.imageUrl == imageUrl),
-           // title: name,
-              // description: description,
-              // loc: loc,
+              imageUrls: arts.map((artForm) => artForm.imageUrl).toList(),
+              initialPageIndex: arts.indexWhere((artForm) => artForm.imageUrl == imageUrl),
             ),
           ),
         );
@@ -363,17 +356,17 @@ List<art> arts = [
   art(
     name: 'Kalamkari',
     place: 'Andhra Pradesh',
-    imageUrl: 'DALL·E 2023-08-19 11.08.34 - culture of india.png',
-  ),
-  art(
-    name: 'Gatka art',
-    place: 'Punjab',
     imageUrl: 'kalamkari1.jpg',
   ),
+  art(
+    name: 'Gatka',
+    place: 'Punjab',
+    imageUrl: 'gatka2.jpeg',
+  ),
     art(
-    name: 'Thang - Lo',
+    name: 'Thang-Lo',
     place: 'Manipur',
-    imageUrl: 'DALL·E 2023-08-19 11.08.34 - culture of india.png',
+    imageUrl: 'Thang-Ta1.jpg',
   )
 ];
 
