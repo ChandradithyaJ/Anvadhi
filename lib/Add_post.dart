@@ -200,7 +200,7 @@ class _AddpostListState extends State<AddpostList> {
                 onPressed: _pickImage,
                 child: const Text("Pick Image"),
               ),
-              if (!_pickedImage.existsSync() || _pickedImage.lengthSync() == 0) Image.file(File(_pickedImage.path)),
+              if (_pickedImage.existsSync()) Image.file(File(_pickedImage.path)),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _sendToDatabase,
