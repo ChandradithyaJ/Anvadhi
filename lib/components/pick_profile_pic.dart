@@ -1,3 +1,4 @@
+import 'package:anvadhi/Hidden_draw.dart';
 import 'package:anvadhi/ProfilePage.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/User.dart' as currentUser;
@@ -68,12 +69,7 @@ class _PickProfilePicState extends State<PickProfilePic> {
                                     await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser?.uid).update({
                                       'defaultImage': profilepics[index]
                                     });
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => ProfilePage(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm)
-                                        )
-                                    );
+                                    Navigator.pop(context);
                                   },
                                 ),
                               ),
