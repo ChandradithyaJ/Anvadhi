@@ -59,6 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
         currentUser.displayName = reqUser['displayName'];
         currentUser.bookmarks = reqUser['bookmarks'];
+        currentUser.defaultImage = reqUser['defaultImage'];
         currentUser.uid = FirebaseAuth.instance.currentUser?.uid;
         currentUser.email = emailController.text;
       } else {

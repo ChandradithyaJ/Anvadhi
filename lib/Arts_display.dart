@@ -5,11 +5,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 import './customWidgets/art_details.dart';
 
 class ArtsDisplay extends StatelessWidget {
+
   Map<String, dynamic> selectedArtForm;
   List<Map<String, dynamic>> ArtForms;
 
-  ArtsDisplay({required this.ArtForms, required this.selectedArtForm})
-      : super();
+  ArtsDisplay({ required this.ArtForms, required this.selectedArtForm }) : super();
 
   Future<void> _refresh() async {
     await Future.delayed(const Duration(seconds: 2));
@@ -29,42 +29,37 @@ class ArtsDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     convertGsToHttps();
     return Scaffold(
-      body: LiquidPullToRefresh(
-        onRefresh: _refresh,
+        body: LiquidPullToRefresh( onRefresh: _refresh,
         springAnimationDurationInMilliseconds: 1000,
-        color: Colors.deepPurple,
-        backgroundColor: Colors.deepPurple[100],
-        height: 100.0,
-        animSpeedFactor: 2,
-        showChildOpacityTransition: true,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 40),
-              const Text(
-                "Lets Explore the Art World",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(height: 20),
-              for (final art in ArtForms)
-                artListItem(
-                  imageUrl: art['image'],
-                  name: art['artName'],
-                  country: art['location'],
-                  selectedArtForm: art,
-                ),
-            ],
-          ),
-        ),
+         color: Colors.deepPurple,
+          backgroundColor: Colors.deepPurple[100],
+          height: 100.0,
+          animSpeedFactor: 2,
+          showChildOpacityTransition: true,
+  
+       child: SingleChildScrollView(
+      child: Column(
+        children: [
+          const SizedBox(height: 40),
+          const Text("Lets Explore the Art World", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+          const SizedBox(height: 20),
+          for (final art in ArtForms)
+            artListItem(
+              imageUrl: art['image'],
+              name: art['artName'],
+              country: art['location'],
+              selectedArtForm: art,
+            ),
+        ],
       ),
+    ),
+        ),
     );
   }
 }
 
 class artListItem extends StatelessWidget {
+
   artListItem({
     super.key,
     required this.imageUrl,
@@ -78,7 +73,7 @@ class artListItem extends StatelessWidget {
   final String name;
   final String country;
   final GlobalKey _backgroundImageKey = GlobalKey();
-
+   
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -92,6 +87,7 @@ class artListItem extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+     
         child: Column(
           children: [
             AspectRatio(
@@ -107,9 +103,10 @@ class artListItem extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-        ),
+          // ),
+        ],
       ),
+    ),
     );
   }
 
@@ -136,26 +133,36 @@ class artListItem extends StatelessWidget {
         FutureBuilder(
           future: _getImage(context, imageUrl),
           builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              // if (snapshot.hasError) {
-              //   return SomethingWentWrong();
-              // }
+            if (snapshot.connectionState ==
+            ConnectionState.done) {
+            // if (snapshot.hasError) {
+            //   return SomethingWentWrong();
+            // }
               return Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context)
+                    .size
+                    .height,
+                width: MediaQuery.of(context)
+                    .size
+                    .width,
                 child: snapshot.data,
-              );
-            } else if (snapshot.connectionState == ConnectionState.waiting) {
-              return Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: const CircularProgressIndicator(),
-              );
-            } else {
+                );
+              } else if (snapshot.connectionState ==
+                ConnectionState.waiting) {
+                return Container(
+                  height: MediaQuery.of(context)
+                      .size
+                      .height,
+                  width: MediaQuery.of(context)
+                      .size
+                      .width,
+                  child: const CircularProgressIndicator(),
+                );
+              } else {
               // CircularProgressIndicator();
-              return Container();
-            }
-          },
+                return Container();
+              }
+            },
         ),
       ],
     );
@@ -211,6 +218,7 @@ class PlxFlowDelegate extends FlowDelegate {
     required this.listItemContext,
     required this.backgroundImageKey,
   }) : super(repaint: scrollable.position);
+
 
   final ScrollableState scrollable;
   final BuildContext listItemContext;
@@ -332,6 +340,7 @@ class RenderPlx extends RenderBox
   void performLayout() {
     size = constraints.biggest;
 
+
     final background = child!;
     final backgroundImageConstraints =
         BoxConstraints.tightFor(width: size.width);
@@ -342,14 +351,18 @@ class RenderPlx extends RenderBox
 
   @override
   void paint(PaintingContext context, Offset offset) {
+
     final viewportDimension = scrollable.position.viewportDimension;
+
 
     final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
     final backgroundOffset =
         localToGlobal(size.centerLeft(Offset.zero), ancestor: scrollableBox);
 
+   
     final scrollFraction =
         (backgroundOffset.dy / viewportDimension).clamp(0.0, 1.0);
+
 
     final verticalAlignment = Alignment(0.0, scrollFraction * 2 - 1);
 
@@ -359,6 +372,7 @@ class RenderPlx extends RenderBox
     final childRect =
         verticalAlignment.inscribe(backgroundSize, Offset.zero & listItemSize);
 
+  
     context.paintChild(
         background,
         (background.parentData as PlxParentData).offset +
