@@ -14,8 +14,8 @@ void main() async {
   Map<String, dynamic> selectedArtForm = {};
 
   /*** fetch art forms ***/
+  final artFormsRef = FirebaseFirestore.instance.collection('artForms');
   try {
-    final artFormsRef = FirebaseFirestore.instance.collection('artForms');
     List<Map<String, dynamic>> allArtForms = [];
     await artFormsRef.get().then((snapshot) => {
       snapshot.docs.forEach((element) {
@@ -27,6 +27,13 @@ void main() async {
   } catch (err) {
     print('Error loading documents: $err');
   }
+
+  artFormsRef.snapshots().listen((snapshot){
+    ArtForms.clear();
+    snapshot.docs.forEach((doc) {ArtForms.add(doc.data()); });
+  },
+    onError: (error) => print("Listen failed: $error"),
+  );
 
   runApp(MaterialApp(
     title: 'Anvadhi',
