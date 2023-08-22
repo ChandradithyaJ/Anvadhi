@@ -90,6 +90,7 @@ class artListItem extends StatelessWidget {
      
         child: Column(
           children: [
+          
            AspectRatio(
             aspectRatio: 19 / 18,
             child: ClipRRect(
