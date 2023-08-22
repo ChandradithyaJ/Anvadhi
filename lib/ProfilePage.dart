@@ -20,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     String? displayName = currentUser.displayName != '' ? currentUser.displayName : user?.displayName;
-    String defaultImage = 'https://www.shutterstock.com/image-illustration/landscape-illustration-game-breath-wild-wallpaper-2216058639';
+    String? defaultImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWTcPJ9nEboVnRKaoXJF3my0wT2Z_re25Isw&usqp=CAU";
 
     return Scaffold(
       body: ListView(
