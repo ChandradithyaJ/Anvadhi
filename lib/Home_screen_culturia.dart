@@ -54,6 +54,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
 
         currentUser.displayName = reqUser['displayName'];
         currentUser.bookmarks = reqUser['bookmarks'];
+        currentUser.defaultImage = reqUser['defaultImage'];
         currentUser.getFirestore = true;
       }
     }
@@ -65,8 +66,6 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
     for(dynamic artForm in widget.ArtForms){
       if(currentUser.bookmarks.contains(artForm['artName'])) bookmarked.add(artForm['image']);
     }
-
-    print(currentUser.bookmarks);
 
     return Scaffold(
       backgroundColor: Colors.purple[50],

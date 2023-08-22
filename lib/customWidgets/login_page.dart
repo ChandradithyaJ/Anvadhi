@@ -47,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
 
       currentUser.displayName = reqUser['displayName'];
       currentUser.bookmarks = reqUser['bookmarks'];
+      currentUser.defaultImage = reqUser['defaultImage'];
       print(currentUser.bookmarks);
       currentUser.uid = FirebaseAuth.instance.currentUser?.uid;
       currentUser.email = emailController.text;

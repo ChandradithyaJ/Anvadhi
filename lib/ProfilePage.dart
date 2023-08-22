@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import "package:anvadhi/customWidgets/Profile_detaila1.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:anvadhi/User.dart' as currentUser;
+import './components/pick_profile_pic.dart';
 
 class ProfilePage extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
@@ -20,7 +21,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
     String? displayName = currentUser.displayName != '' ? currentUser.displayName : user?.displayName;
-    String? defaultImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWTcPJ9nEboVnRKaoXJF3my0wT2Z_re25Isw&usqp=CAU";
 
     return Scaffold(
       body: ListView(
@@ -29,8 +29,15 @@ class _ProfilePageState extends State<ProfilePage> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: ProfileWidget(
-              imagePath: user?.photoURL ?? defaultImage,
-              onClicked: () async {},
+              imagePath: user?.photoURL ?? currentUser.defaultImage,
+              onClicked: () async {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PickProfilePic(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm)
+                  )
+                );
+              },
             ),
           ),
           const SizedBox(height: 24),
