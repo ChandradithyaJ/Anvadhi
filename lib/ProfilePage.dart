@@ -69,6 +69,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     ElevatedButton(
                       onPressed: (){
                         FirebaseAuth.instance.signOut();
+                        currentUser.displayName = '';
+                        currentUser.bookmarks = [];
+                        currentUser.email = '';
+                        currentUser.uid = '';
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) =>

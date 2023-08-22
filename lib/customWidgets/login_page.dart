@@ -43,7 +43,6 @@ class _LoginPageState extends State<LoginPage> {
           allUsers.add(element.data());
         })
       });
-      print(currentUser.bookmarks);
       Map<String, dynamic> reqUser = allUsers.firstWhere((element) => element['uid'] == FirebaseAuth.instance.currentUser?.uid);
 
       currentUser.displayName = reqUser['displayName'];

@@ -73,22 +73,43 @@ class ArtDetails extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                try{
-                  String uid = FirebaseAuth.instance.currentUser!.uid;
-                  currentUser.bookmarks.add(artForm['artName']);
-                  await FirebaseFirestore.instance.collection('users').doc(uid).update({
-                    'bookmarks': currentUser.bookmarks
-                  });
-                } catch (err) {
-                  print('Error adding bookmark: $err');
-                }
-              },
-              child: Icon(
-                Icons.bookmark_add_outlined
-              ),
-            )
+            Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    try{
+                      String uid = FirebaseAuth.instance.currentUser!.uid;
+                      if(!currentUser.bookmarks.contains(artForm['artName'])) currentUser.bookmarks.add(artForm['artName']);
+                      await FirebaseFirestore.instance.collection('users').doc(uid).update({
+                        'bookmarks': currentUser.bookmarks
+                      });
+                    } catch (err) {
+                      print('Error adding bookmark: $err');
+                    }
+                  },
+                  child: const Icon(
+                      Icons.bookmark_add_outlined
+                  ),
+                ),
+                const SizedBox(width: 30.0,),
+                ElevatedButton(
+                  onPressed: () async {
+                    try{
+                      String uid = FirebaseAuth.instance.currentUser!.uid;
+                      if(currentUser.bookmarks.contains(artForm['artName']))currentUser.bookmarks.remove(artForm['artName']);
+                      await FirebaseFirestore.instance.collection('users').doc(uid).update({
+                        'bookmarks': currentUser.bookmarks
+                      });
+                    } catch (err) {
+                      print('Error deleting bookmark: $err');
+                    }
+                  },
+                  child: const Icon(
+                      Icons.remove_circle
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       ),
