@@ -88,6 +88,7 @@ flutter:
     - lib/assets/images/google-logo.png
     - lib/assets/images/image.jpg
     - lib/assets/3D models/Logo/
+    - lib/assets/images/arrow.png
     # - lib/assets/3D models/Model_1_Base/
     #- lib/assets/3D models/TownHall/
     - lib/assets/animations/animation_llhiqvqs.json

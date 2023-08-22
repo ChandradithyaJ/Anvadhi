@@ -6,12 +6,12 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:anvadhi/BoardingPage3.dart';
 import './services/routes.dart';
 
-
 class OnBoardingScreen extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
   List<Map<String, dynamic>> ArtForms;
 
-  OnBoardingScreen({ required this.ArtForms, required this.selectedArtForm }) : super();
+  OnBoardingScreen({required this.ArtForms, required this.selectedArtForm})
+      : super();
 
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
@@ -51,7 +51,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
               });
             },
             children: [
-              // mannu replace containers to pages via routes
               Container(
                 color: Colors.orangeAccent,
                 child: BoardingPage1(),
@@ -61,8 +60,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                 child: BoardingPage2(),
               ),
               Container(
-                child: BoardingPage3(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm)
-              ),
+                  child: BoardingPage3(
+                      ArtForms: widget.ArtForms,
+                      selectedArtForm: widget.selectedArtForm)),
             ],
           ),
           Container(
@@ -78,14 +78,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                         onTap: () {
                           controller.jumpToPage(2);
                         },
-                        child: const Center(child: Text("Skip", style: TextStyle(backgroundColor: Colors.lightBlue))),
+                        child: const Center(
+                            child: Text("Skip",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    backgroundColor: Colors.lightBlue))),
                       ),
                       SmoothPageIndicator(
                         controller: controller,
                         count: 3,
                         effect: const ExpandingDotsEffect(
-                          activeDotColor: Colors.orange,
-                          dotColor: Colors.grey,
+                          activeDotColor: Color.fromARGB(255, 88, 54, 3),
+                          dotColor: Color.fromARGB(255, 208, 69, 69),
                           dotHeight: 4,
                           dotWidth: 6,
                           spacing: 5,
@@ -98,7 +102,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                                     duration: const Duration(milliseconds: 600),
                                     curve: Curves.easeInOut);
                               },
-                              child: const Center(child: Text("Next",style: TextStyle( fontSize: 10, backgroundColor: Colors.lightBlue), ),),
+                              child: const Center(
+                                child: Text(
+                                  "Next",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      backgroundColor: Colors.lightBlue),
+                                ),
+                              ),
                             )
                           : GestureDetector(
                               onTap: () {
@@ -106,20 +117,21 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                                     duration: const Duration(milliseconds: 600),
                                     curve: Curves.easeInOut);
                               },
-                            child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) =>
-                                      Hidden_draww(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm,),
-                                    )
-                                  );
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Hidden_draww(
+                                            ArtForms: widget.ArtForms,
+                                            selectedArtForm:
+                                                widget.selectedArtForm,
+                                          ),
+                                        ));
                                   },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.purple[100]
-                                ),
-                                
-                                child: const Text("Get Started")),
-                                
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.purple[100]),
+                                  child: const Text("Get Started")),
                             )
                     ],
                   ),

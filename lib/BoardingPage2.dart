@@ -29,8 +29,18 @@ class _BoardingPage2 extends State<BoardingPage2>
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          SizedBox(
-            height: 30,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(140.0, 40.0, 50.0, 0.0),
+            child: Container(
+              child: Container(
+                child: Text(
+                  '<— Swipe Left',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                  ),
+                ),
+              ),
+            ),
           ),
           Container(
             height: 600, // Adjust the height as needed

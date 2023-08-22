@@ -6,7 +6,8 @@ import './Hidden_draw.dart';
 class BoardingPage3 extends StatefulWidget {
   List<Map<String, dynamic>> ArtForms;
   Map<String, dynamic> selectedArtForm;
-  BoardingPage3({ required this.ArtForms, required this.selectedArtForm }) : super();
+  BoardingPage3({required this.ArtForms, required this.selectedArtForm})
+      : super();
 
   @override
   _BoardingPage3 createState() => _BoardingPage3();
@@ -35,35 +36,34 @@ class _BoardingPage3 extends State<BoardingPage3>
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          
-           
-            Container(
-              height: 500, // Adjust the height as needed
-              child: Center(
-                child: Lottie.asset(
-                  'lib/assets/animations/animation_llhiqvqs.json',
-                  controller: _controller,
-                  onLoaded: (composition) {
-                    _controller
-                      ..duration = composition.duration
-                      ..forward();
-                    // Loop it
-                    _controller.repeat();
-                  },
-                ),
+          Container(
+            height: 500, // Adjust the height as needed
+            child: Center(
+              child: Lottie.asset(
+                'lib/assets/animations/animation_llhiqvqs.json',
+                controller: _controller,
+                onLoaded: (composition) {
+                  _controller
+                    ..duration = composition.duration
+                    ..forward();
+                  // Loop it
+                  _controller.repeat();
+                },
               ),
             ),
+          ),
           SizedBox(height: 20),
           GestureDetector(
             onDoubleTap: () {
               // navigate to the arts page
               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Hidden_draww(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm,))
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Hidden_draww(
+                            ArtForms: widget.ArtForms,
+                            selectedArtForm: widget.selectedArtForm,
+                          )));
             },
-         
-
             child: Container(
               height: 300, // Adjust the height as needed
               child: Center(
@@ -78,10 +78,11 @@ class _BoardingPage3 extends State<BoardingPage3>
                               'lib/assets/3D models/Logo/Culturia_text_final.obj',
                           backfaceCulling: true);
                       double scaleFactor = 1;
-                      object.scale.setValues(scaleFactor, scaleFactor, scaleFactor);
+                      object.scale
+                          .setValues(scaleFactor, scaleFactor, scaleFactor);
                       object.rotation.setValues(0, 50, -10);
                       object.position.setValues(0.3, 0, 0);
-                      
+
                       object.updateTransform();
                       // Add animations
                       scene.world.add(object);
@@ -98,5 +99,3 @@ class _BoardingPage3 extends State<BoardingPage3>
     );
   }
 }
-
-
