@@ -3,6 +3,10 @@ import 'package:lottie/lottie.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 import 'Home_Screen_Culturia.dart';
 class BoardingPage3 extends StatefulWidget {
+  List<Map<String, dynamic>> ArtForms;
+  Map<String, dynamic> selectedArtForm;
+  BoardingPage3({ required this.ArtForms, required this.selectedArtForm }) : super();
+
   @override
   _BoardingPage3 createState() => _BoardingPage3();
 }
@@ -54,7 +58,8 @@ class _BoardingPage3 extends State<BoardingPage3>
               // navigate to the arts page
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Home_screen_culturia()),);
+                MaterialPageRoute(builder: (context) => Home_screen_culturia(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm),)
+              );
             },
          
 

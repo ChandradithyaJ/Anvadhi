@@ -1,4 +1,4 @@
-import 'package:anvadhi/Hidden_draw.dart';
+import 'package:anvadhi/onBoard_screens.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'login_or_register_page.dart';
@@ -20,9 +20,9 @@ class _AuthPageState extends State<AuthPage> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Hidden_draww(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm);
+              return OnBoardingScreen(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm);
             } else {
-              return LoginOrRegisterPage();
+              return const LoginOrRegisterPage();
             }
           },
         ));

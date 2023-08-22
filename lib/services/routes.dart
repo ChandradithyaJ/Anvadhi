@@ -1,17 +1,12 @@
+import 'package:anvadhi/Add_post.dart';
 import 'package:anvadhi/Hidden_draw.dart';
 import 'package:anvadhi/ThreeD_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/Home_screen_culturia.dart';
-import 'package:anvadhi/Home_screen_culturia_artist.dart';
 import 'package:anvadhi/ProfilePage.dart';
 import 'package:anvadhi/Side_menu.dart';
-// import 'package:anvadhi/Liquid_drop_trying.dart';
 import 'package:anvadhi/animation_try.dart';
 import 'package:anvadhi/onBoard_screens.dart';
-// import 'package:anvadhi/Liquid_drop_trying.dart';
-import 'package:anvadhi/Add_post.dart';
-import 'package:anvadhi/Arts_display.dart';
-import 'package:anvadhi/FullScreen.dart';
 import 'package:anvadhi/customWidgets/MapPage.dart';
 
 class AppRoutes {
@@ -44,13 +39,12 @@ class AppRoutes {
             selectedArtForm: selectedArtForm,
           ),
       Sidemenu: (context) => Side_menu(),
-      Profile: (context) => ProfilePage(),
+      Profile: (context) => ProfilePage(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
       
       Anim: (context) => Animation_try(),
-      OnBoard: (context) => OnBoardingScreen(),
-      culturia: (context) => Home_screen_culturia(),
-      arts: (context) => Home_screen_culturia_artist(),
-      Addposts: (context) => Addpost(),
+      OnBoard: (context) => OnBoardingScreen(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
+      culturia: (context) => Home_screen_culturia(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
+      Addposts: (context) => AddpostList(ArtForms: ArtForms),
       ThreeD: (context) => CombinedPage(),
       
       Mapping: (context) =>

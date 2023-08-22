@@ -8,7 +8,10 @@ import './services/routes.dart';
 
 
 class OnBoardingScreen extends StatefulWidget {
-  const OnBoardingScreen({Key? key}) : super(key: key);
+  Map<String, dynamic> selectedArtForm;
+  List<Map<String, dynamic>> ArtForms;
+
+  OnBoardingScreen({ required this.ArtForms, required this.selectedArtForm }) : super();
 
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
@@ -58,7 +61,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                 child: BoardingPage2(),
               ),
               Container(
-                child: BoardingPage3(),
+                child: BoardingPage3(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm)
               ),
             ],
           ),
@@ -105,7 +108,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                               },
                             child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, AppRoutes.Smenu);
+                                  Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) =>
+                                      Home_screen_culturia(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm,),
+                                    )
+                                  );
                                   },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.purple[100]
