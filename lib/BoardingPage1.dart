@@ -48,11 +48,11 @@ class _BoardingPage1 extends State<BoardingPage1>
               ),
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
 
           Container(
-            child: Padding(
-              padding: const EdgeInsets.all(60.0),
+            child: const Padding(
+              padding: EdgeInsets.all(60.0),
               child: Column(
                 children: [
                   Text(

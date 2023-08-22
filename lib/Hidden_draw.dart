@@ -64,7 +64,7 @@ class _Hidden_draww extends State<Hidden_draww> {
               TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
           selectedStyle: const TextStyle(color: Colors.orange),
         ),
-        ProfilePage(),
+        ProfilePage(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm),
       ),
       ScreenHiddenDrawer(
           ItemHiddenMenu(

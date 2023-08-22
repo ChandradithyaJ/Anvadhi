@@ -4,7 +4,7 @@ import 'package:anvadhi/Home_screen_culturia.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:anvadhi/BoardingPage3.dart';
-import 'packgae:anavdhi/Services/routes.dart;
+import './services/routes.dart';
 
 
 class OnBoardingScreen extends StatefulWidget {
@@ -75,12 +75,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                         onTap: () {
                           controller.jumpToPage(2);
                         },
-                        child: Center(child: Text("Skip")),
+                        child: const Center(child: Text("Skip")),
                       ),
                       SmoothPageIndicator(
                         controller: controller,
                         count: 3,
-                        effect: ExpandingDotsEffect(
+                        effect: const ExpandingDotsEffect(
                           activeDotColor: Colors.orange,
                           dotColor: Colors.grey,
                           dotHeight: 4,
@@ -92,28 +92,26 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                           ? GestureDetector(
                               onTap: () {
                                 controller.nextPage(
-                                    duration: Duration(milliseconds: 600),
+                                    duration: const Duration(milliseconds: 600),
                                     curve: Curves.easeInOut);
                               },
-                              child: Center(child: Text("Next",style: TextStyle( fontSize: 10),) ,),
+                              child: const Center(child: Text("Next",style: TextStyle( fontSize: 10),) ,),
                             )
                           : GestureDetector(
                               onTap: () {
                                 controller.nextPage(
-                                    duration: Duration(milliseconds: 600),
+                                    duration: const Duration(milliseconds: 600),
                                     curve: Curves.easeInOut);
                               },
                             child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context,Approutes.Smenu);
-                                    
-
-                                },
+                                  Navigator.pushNamed(context, AppRoutes.Smenu);
+                                  },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.purple[100]
                                 ),
                                 
-                                child: Text("Get Started")),
+                                child: const Text("Get Started")),
                                 
                             )
                     ],
