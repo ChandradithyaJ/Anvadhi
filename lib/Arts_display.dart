@@ -48,7 +48,7 @@ class ArtsDisplay extends StatelessWidget {
               imageUrl: art['image'],
               name: art['artName'],
               country: art['location'],
-              selectedArtForm: selectedArtForm,
+              selectedArtForm: art,
             ),
         ],
       ),
