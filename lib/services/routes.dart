@@ -45,7 +45,7 @@ class AppRoutes {
       OnBoard: (context) => OnBoardingScreen(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
       culturia: (context) => Home_screen_culturia(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
       Addposts: (context) => AddpostList(ArtForms: ArtForms),
-      ThreeD: (context) => CombinedPage(),
+      ThreeD: (context) => CombinedPage(ArtForms: ArtForms, selectedArtForm: selectedArtForm),
       
       Mapping: (context) =>
           MapPage(ArtForms: ArtForms, selectedArtForm: selectedArtForm),

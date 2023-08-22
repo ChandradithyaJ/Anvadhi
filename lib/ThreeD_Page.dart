@@ -3,6 +3,11 @@ import 'package:lottie/lottie.dart';
 import 'package:flutter_cube/flutter_cube.dart';
 import 'Arts_display.dart';
 class CombinedPage extends StatefulWidget {
+  Map<String, dynamic> selectedArtForm;
+  List<Map<String, dynamic>> ArtForms;
+
+  CombinedPage({ required this.ArtForms, required this.selectedArtForm }) : super();
+
   @override
   _CombinedPageState createState() => _CombinedPageState();
 }
@@ -56,7 +61,7 @@ class _CombinedPageState extends State<CombinedPage>
               // navigate to the arts page
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ArtsDisplay()),);
+                MaterialPageRoute(builder: (context) => ArtsDisplay(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm)),);
             },
             child: Container(
               height: 300, // Adjust the height as needed

@@ -90,7 +90,9 @@ flutter:
     - lib/assets/3D models/Logo/
     # - lib/assets/3D models/Model_1_Base/
     #- lib/assets/3D models/TownHall/
-    - lib/assets/animations/
+    - lib/assets/animations/animation_llhiqvqs.json
+    - lib/assets/animations/animation_lll7id62.json
+    - lib/assets/animations/animation_lll7kvpg.json
     # - lib/assets/images/source/mybot1.jpeg
     # - lib/assets/images/source/mybot3.jpeg
     # - lib/assets/images/source/mybot3.jpg

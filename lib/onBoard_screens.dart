@@ -1,6 +1,6 @@
 import 'package:anvadhi/BoardingPage1.dart';
 import 'package:anvadhi/BoardingPage2.dart';
-import 'package:anvadhi/Home_screen_culturia.dart';
+import 'package:anvadhi/Hidden_draw.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:anvadhi/BoardingPage3.dart';
@@ -78,7 +78,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                         onTap: () {
                           controller.jumpToPage(2);
                         },
-                        child: const Center(child: Text("Skip")),
+                        child: const Center(child: Text("Skip", style: TextStyle(backgroundColor: Colors.lightBlue))),
                       ),
                       SmoothPageIndicator(
                         controller: controller,
@@ -98,7 +98,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                                     duration: const Duration(milliseconds: 600),
                                     curve: Curves.easeInOut);
                               },
-                              child: const Center(child: Text("Next",style: TextStyle( fontSize: 10),) ,),
+                              child: const Center(child: Text("Next",style: TextStyle( fontSize: 10, backgroundColor: Colors.lightBlue), ),),
                             )
                           : GestureDetector(
                               onTap: () {
@@ -110,7 +110,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                                 onPressed: () {
                                   Navigator.push(context,
                                     MaterialPageRoute(builder: (context) =>
-                                      Home_screen_culturia(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm,),
+                                      Hidden_draww(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm,),
                                     )
                                   );
                                   },
