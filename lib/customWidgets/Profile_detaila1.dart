@@ -14,12 +14,12 @@ class Profile_detaila1 extends StatelessWidget {
       );
   Widget buildDivider() => Container(
         height: 24,
-        child: VerticalDivider(),
+        child: const VerticalDivider(),
       );
 
   Widget buildButton(BuildContext context, String value, String text) =>
       MaterialButton(
-        padding: EdgeInsets.symmetric(vertical: 6),
+        padding: const EdgeInsets.symmetric(vertical: 6),
         onPressed: () {},
         materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         child: Column(

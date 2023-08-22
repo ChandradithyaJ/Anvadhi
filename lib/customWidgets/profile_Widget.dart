@@ -30,7 +30,6 @@ class ProfileWidget extends StatelessWidget {
 
   Widget buildImage() {
     final image = NetworkImage(imagePath);
-
     return ClipOval(
       child: Material(
         color: Colors.transparent,
@@ -51,7 +50,7 @@ class ProfileWidget extends StatelessWidget {
         child: buildCircle(
           color: color,
           all: 8,
-          child: Icon(
+          child: const Icon(
             Icons.edit,
             color: Colors.white,
             size: 20,

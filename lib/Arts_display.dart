@@ -95,7 +95,7 @@ class artListItem extends StatelessWidget {
         child: Column(
           children: [
             AspectRatio(
-              aspectRatio: 5 / 3,
+              aspectRatio: 5 / 7,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Stack(
