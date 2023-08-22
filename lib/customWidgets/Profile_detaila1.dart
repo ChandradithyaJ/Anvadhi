@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:anvadhi/User.dart' as currentUser;
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile_detaila1 extends StatelessWidget {
+  dynamic verified = FirebaseAuth.instance.currentUser?.emailVerified;
+
   @override
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          buildButton(context, '2', 'Skills'),
-          buildDivider(),
-          buildButton(context, '0', 'Current Courses'),
+          buildButton(context, currentUser.bookmarks.length.toString(), 'Bookmarked courses'),
         ],
       );
   Widget buildDivider() => Container(
