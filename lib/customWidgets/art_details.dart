@@ -74,6 +74,7 @@ class ArtDetails extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
                   onPressed: () async {

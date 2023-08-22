@@ -3,5 +3,5 @@ library user;
 String? uid = '';
 String? displayName = '';
 String? email = '';
-List<String> bookmarks = [];
+List<dynamic> bookmarks = [];
 bool getFirestore = false;

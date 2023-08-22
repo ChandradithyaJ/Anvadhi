@@ -47,8 +47,10 @@ class _LoginPageState extends State<LoginPage> {
 
       currentUser.displayName = reqUser['displayName'];
       currentUser.bookmarks = reqUser['bookmarks'];
+      print(currentUser.bookmarks);
       currentUser.uid = FirebaseAuth.instance.currentUser?.uid;
       currentUser.email = emailController.text;
+      currentUser.getFirestore = true;
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
@@ -76,6 +78,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.blue[300],
       body: SingleChildScrollView(
