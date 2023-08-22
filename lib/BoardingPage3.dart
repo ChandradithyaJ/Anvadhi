@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_cube/flutter_cube.dart';
-import 'Home_Screen_Culturia.dart';
+import './Hidden_draw.dart';
+
 class BoardingPage3 extends StatefulWidget {
   List<Map<String, dynamic>> ArtForms;
   Map<String, dynamic> selectedArtForm;
@@ -39,7 +40,7 @@ class _BoardingPage3 extends State<BoardingPage3>
             Container(
               height: 500, // Adjust the height as needed
               child: Center(
-                child: Lottie.network(
+                child: Lottie.asset(
                   'lib/assets/animations/animation_llhiqvqs.json',
                   controller: _controller,
                   onLoaded: (composition) {
@@ -58,7 +59,7 @@ class _BoardingPage3 extends State<BoardingPage3>
               // navigate to the arts page
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Home_screen_culturia(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm),)
+                MaterialPageRoute(builder: (context) => Hidden_draww(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm,))
               );
             },
          

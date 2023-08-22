@@ -35,7 +35,7 @@ class _BoardingPage1 extends State<BoardingPage1>
           Container(
             height: 600, // Adjust the height as needed
             child: Center(
-              child: Lottie.network(
+              child: Lottie.asset(
                 'lib/assets/animations/animation_lll7kvpg.json',
                 controller: _controller,
                 onLoaded: (composition) {
