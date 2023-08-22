@@ -37,13 +37,13 @@ class _LoginPageState extends State<LoginPage> {
           email: emailController.text,
           password: passwordController.text);
       final usersRef = FirebaseFirestore.instance.collection('users');
-      List<Map<String, dynamic>> allUsers = [];
-      await usersRef.get().then((snapshot) => {
+      List<Map<String, dynamic>> reqUsers = [];
+      await usersRef.where("uid", isEqualTo: FirebaseAuth.instance.currentUser?.uid).get().then((snapshot){
         snapshot.docs.forEach((element) {
-          allUsers.add(element.data());
-        })
+          reqUsers.add(element.data());
+        });
       });
-      Map<String, dynamic> reqUser = allUsers.firstWhere((element) => element['uid'] == FirebaseAuth.instance.currentUser?.uid);
+      Map<String, dynamic> reqUser = reqUsers[0];
 
       currentUser.displayName = reqUser['displayName'];
       currentUser.bookmarks = reqUser['bookmarks'];

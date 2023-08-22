@@ -73,6 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         currentUser.bookmarks = [];
                         currentUser.email = '';
                         currentUser.uid = '';
+                        currentUser.getFirestore = false;
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) =>

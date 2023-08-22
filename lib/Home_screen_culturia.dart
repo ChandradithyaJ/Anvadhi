@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:anvadhi/Arts_display.dart';
 import 'package:anvadhi/User.dart' as currentUser;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //firebase stuff
 import 'package:firebase_storage/firebase_storage.dart';
@@ -39,6 +41,24 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
   @override
   Widget build(BuildContext context) {
 
+    void getUserDetails() async {
+      if(!currentUser.getFirestore){
+        final usersRef = FirebaseFirestore.instance.collection('users');
+        List<Map<String, dynamic>> reqUsers = [];
+        await usersRef.where("uid", isEqualTo: FirebaseAuth.instance.currentUser?.uid).get().then((snapshot){
+          snapshot.docs.forEach((element) {
+            reqUsers.add(element.data());
+          });
+        });
+        Map<String, dynamic> reqUser = reqUsers[0];
+
+        currentUser.displayName = reqUser['displayName'];
+        currentUser.bookmarks = reqUser['bookmarks'];
+        currentUser.getFirestore = true;
+      }
+    }
+
+    getUserDetails();
     // store all the images in a list
     List<String> artFormPics = widget.ArtForms.map((artForm) => artForm['image'].toString()).toList();
     List<String> bookmarked = [];
