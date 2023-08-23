@@ -19,39 +19,47 @@ The Anvadhi Flutter application is designed to offer a seamless user experience 
 
 The app starts with a user-friendly authentication system. Users can create accounts securely or log in using existing credentials. This authentication mechanism ensures a personalized experience for every user.
 
-Dummy Image: ![Authentication](https://dummyimage.com/200x150/ccc/000.png)
+![Authentication](./readme_assets/auth.jpg)
 
 ### _Art Upload_
 
 One of the core features of Anvadhi is the ability for users to contribute to the platform by uploading images or videos showcasing old and valuable art forms. This easy-to-use feature empowers users to become contributors and share their passion for preserving artistry.
 
-Dummy Image: ![Art Upload](https://dummyimage.com/200x150/ccc/000.png)
+![Art Upload](./readme_assets/art_upload.jpg)
 
 ### _Art Discovery_
 
-The app provides a rich browsing experience through its "Art Discovery" feature. Users can explore a diverse array of art forms uploaded by various individuals. This feature not only serves as a source of inspiration but also facilitates the discovery of lesser-known art forms and their creators or uploaders. 
+The app provides a rich browsing experience through its "Art Discovery" feature. Users can explore a diverse array of art forms uploaded by various individuals. This feature not only serves as a source of inspiration but also facilitates the discovery of lesser-known art forms and their creators or uploaders.
 
-Dummy Image: ![Art Discovery](https://dummyimage.com/200x150/ccc/000.png)
+![Art Discovery](./readme_assets/art_discovery.jpg)
+
+### _Interactive Map_
+
+The app provides the user a very interactive map where /she can select one or more artworks a place is/was famously known for. The user can also select the artworks restricting the search in a specific timezone. The place user selecs is highlighted with a red marker.
+
+![Interactive Map](./readme_assets/map_search.jpg)
+
 <!-- (
   ### _Artisan Profiles_
 
 Each user on the platform has a dedicated profile that highlights their information and background. This feature not only fosters a sense of community but also allows users to learn more about the creators behind the art forms they admire, and helps the Artists make their art more attractive, popular and help them with their as well as financial well-being
 
-Dummy Image: ![Artisan Profiles](https://dummyimage.com/200x150/ccc/000.png)
+Dummy Image: ![Artisan Profiles](https://dummyimage.com/200x150/ccc/000.jpg)
 
-This is a comment. 
+This is a comment.
 
 ### _Recognition and Interaction_
 
 Art enthusiasts can engage with artists by expressing appreciation through likes and comments on their uploaded content. This interactive feature encourages meaningful connections between creators and their audience, fostering a supportive community.
 
-Dummy Image: ![Recognition and Interaction](https://dummyimage.com/200x150/ccc/000.png)
+Dummy Image: ![Recognition and Interaction](https://dummyimage.com/200x150/ccc/000.jpg)
 -->
+
 ### _Bookmarking Art_
 
 Users can now bookmark their favorite art pieces to easily revisit and appreciate them later. This feature enhances user engagement and helps them curate their personal collection of beloved art forms.
 
-Dummy Image: ![Bookmarking Art](https://dummyimage.com/200x150/ccc/000.png)
+![Bookmarking Art](./readme_assets/bookmark.jpg)
 
 ### _Upcoming Features_
 
