@@ -3,6 +3,7 @@ import 'package:anvadhi/library/User.dart' as currentUser;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../Hidden_draw.dart';
 
 class PickProfilePic extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
@@ -78,7 +79,13 @@ class _PickProfilePicState extends State<PickProfilePic> {
                                         .update({
                                       'defaultImage': profilepics[index]
                                     });
-                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Hidden_draww(
+                                                ArtForms: widget.ArtForms,
+                                                selectedArtForm:
+                                                widget.selectedArtForm)));
                                   },
                                 ),
                               ),

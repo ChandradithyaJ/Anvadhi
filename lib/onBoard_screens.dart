@@ -59,84 +59,83 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                 color: Colors.orange,
                 child: BoardingPage2(),
               ),
-              Container(
-                  child: BoardingPage3(
-                      ArtForms: widget.ArtForms,
-                      selectedArtForm: widget.selectedArtForm)),
+              BoardingPage3(
+                  ArtForms: widget.ArtForms,
+                  selectedArtForm: widget.selectedArtForm),
             ],
           ),
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.all(90.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          controller.jumpToPage(2);
-                        },
-                        child: const Center(
-                            child: Text("Skip",
+          Padding(
+            padding: const EdgeInsets.all(90.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        controller.jumpToPage(2);
+                      },
+                      child: const Center(
+                          child: Text("Skip",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  backgroundColor: Colors.lightBlue))),
+                    ),
+                    SmoothPageIndicator(
+                      controller: controller,
+                      count: 3,
+                      effect: const ExpandingDotsEffect(
+                        activeDotColor: Color.fromARGB(255, 88, 54, 3),
+                        dotColor: Color.fromARGB(255, 208, 69, 69),
+                        dotHeight: 4,
+                        dotWidth: 6,
+                        spacing: 5,
+                      ),
+                    ),
+                    index != 2
+                        ? GestureDetector(
+                            onTap: () {
+                              controller.nextPage(
+                                  duration: const Duration(milliseconds: 600),
+                                  curve: Curves.easeInOut);
+                            },
+                            child: const Center(
+                              child: Text(
+                                "Next",
                                 style: TextStyle(
                                     fontSize: 20,
-                                    backgroundColor: Colors.lightBlue))),
-                      ),
-                      SmoothPageIndicator(
-                        controller: controller,
-                        count: 3,
-                        effect: const ExpandingDotsEffect(
-                          activeDotColor: Color.fromARGB(255, 88, 54, 3),
-                          dotColor: Color.fromARGB(255, 208, 69, 69),
-                          dotHeight: 4,
-                          dotWidth: 6,
-                          spacing: 5,
-                        ),
-                      ),
-                      index != 2
-                          ? GestureDetector(
-                              onTap: () {
-                                controller.nextPage(
-                                    duration: const Duration(milliseconds: 600),
-                                    curve: Curves.easeInOut);
-                              },
-                              child: const Center(
-                                child: Text(
-                                  "Next",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      backgroundColor: Colors.lightBlue),
-                                ),
+                                    backgroundColor: Colors.lightBlue),
                               ),
-                            )
-                          : GestureDetector(
-                              onTap: () {
-                                controller.nextPage(
-                                    duration: const Duration(milliseconds: 600),
-                                    curve: Curves.easeInOut);
-                              },
-                              child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Hidden_draww(
-                                            ArtForms: widget.ArtForms,
-                                            selectedArtForm:
-                                                widget.selectedArtForm,
-                                          ),
-                                        ));
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.purple[100]),
-                                  child: const Text("Get Started")),
-                            )
-                    ],
-                  ),
-                ],
-              ),
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              controller.nextPage(
+                                  duration: const Duration(milliseconds: 600),
+                                  curve: Curves.easeInOut);
+                            },
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Hidden_draww(
+                                          ArtForms: widget.ArtForms,
+                                          selectedArtForm:
+                                              widget.selectedArtForm,
+                                        ),
+                                      ));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.purple[100],
+                                    minimumSize: const Size(70.0, 40.0),
+                                    maximumSize: const Size(70.0, 40.0)),
+                                child: const Text("Start!")),
+                          )
+                  ],
+                ),
+              ],
             ),
           ),
         ],

@@ -14,7 +14,7 @@ class _BoardingPage2 extends State<BoardingPage2>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
   }
@@ -29,21 +29,38 @@ class _BoardingPage2 extends State<BoardingPage2>
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(140.0, 40.0, 50.0, 0.0),
-            child: Container(
-              child: Container(
-                child: Text(
-                  '<— Swipe Left',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                  ),
+          const Center(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(30.0, 40.0, 50.0, 0.0),
+              child: Text(
+                '<—   Swipe  -->',
+                style: TextStyle(
+                  fontSize: 20.0,
                 ),
               ),
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(0, 40.0, 0, 0),
+            child: Column(
+              children: [
+                Text(
+                  'Lets, Connect Art with World!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                    fontFamily: 'IndieFlower',
+                  ),
+                ),
+
+                // SizedBox(height: 50),
+              ],
+            ),
+          ),
           Container(
-            height: 600, // Adjust the height as needed
+            height: 450, // Adjust the height as needed
             child: Center(
               child: Lottie.asset(
                 'lib/assets/animations/animation_lll7id62.json',
@@ -55,28 +72,6 @@ class _BoardingPage2 extends State<BoardingPage2>
                   // Loop it
                   _controller.repeat();
                 },
-              ),
-            ),
-          ),
-          SizedBox(height: 5),
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.all(60.0),
-              child: Column(
-                children: [
-                  Text(
-                    'Lets, Connect Art with World!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
-                      fontFamily: 'IndieFlower',
-                    ),
-                  ),
-
-                  // SizedBox(height: 50),
-                ],
               ),
             ),
           ),

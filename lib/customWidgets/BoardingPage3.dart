@@ -21,7 +21,7 @@ class _BoardingPage3 extends State<BoardingPage3>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
   }
@@ -37,7 +37,7 @@ class _BoardingPage3 extends State<BoardingPage3>
       body: ListView(
         children: <Widget>[
           Container(
-            height: 500, // Adjust the height as needed
+            height: 400, // Adjust the height as needed
             child: Center(
               child: Lottie.asset(
                 'lib/assets/animations/animation_llhiqvqs.json',
@@ -52,7 +52,6 @@ class _BoardingPage3 extends State<BoardingPage3>
               ),
             ),
           ),
-          SizedBox(height: 20),
           GestureDetector(
             onDoubleTap: () {
               // navigate to the arts page
@@ -65,7 +64,7 @@ class _BoardingPage3 extends State<BoardingPage3>
                           )));
             },
             child: Container(
-              height: 300, // Adjust the height as needed
+              height: 200, // Adjust the height as needed
               child: Center(
                 child: AnimatedContainer(
                   curve: Curves.bounceInOut,

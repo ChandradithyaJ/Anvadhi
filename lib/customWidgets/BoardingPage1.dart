@@ -33,7 +33,7 @@ class _BoardingPage1 extends State<BoardingPage1>
             padding: const EdgeInsets.fromLTRB(120.0, 40.0, 50.0, 0.0),
             child: Container(
               child: Container(
-                child: Text(
+                child: const Text(
                   ' <— Swipe Left',
                   style: TextStyle(
                     fontSize: 20.0,
@@ -43,25 +43,8 @@ class _BoardingPage1 extends State<BoardingPage1>
             ),
           ),
           Container(
-            height: 600, // Adjust the height as needed
-            child: Center(
-              child: Lottie.asset(
-                'lib/assets/animations/animation_lll7kvpg.json',
-                controller: _controller,
-                onLoaded: (composition) {
-                  _controller
-                    ..duration = composition.duration
-                    ..forward();
-
-                  _controller.repeat();
-                },
-              ),
-            ),
-          ),
-          const SizedBox(height: 5),
-          Container(
             child: const Padding(
-              padding: EdgeInsets.all(60.0),
+              padding: EdgeInsets.fromLTRB(0, 40.0, 0, 0.0),
               child: Column(
                 children: [
                   Text(
@@ -87,6 +70,21 @@ class _BoardingPage1 extends State<BoardingPage1>
                   ),
                   // SizedBox(height: 50),
                 ],
+              ),
+            ),
+          ),
+          Container(
+            height: 300, // Adjust the height as needed
+            child: Center(
+              child: Lottie.asset(
+                'lib/assets/animations/animation_lll7kvpg.json',
+                controller: _controller,
+                onLoaded: (composition) {
+                  _controller
+                    ..duration = composition.duration
+                    ..forward();
+                  _controller.repeat();
+                },
               ),
             ),
           ),
