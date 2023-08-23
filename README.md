@@ -13,7 +13,7 @@ Welcome to the source code of the Anvadhi Flutter application! This repository c
 
 ## _App Flow and Features_
 
-The Anvadhi Flutter application is designed to offer a seamless user experience while preserving old art forms, supporting artisans, and fostering cultural exchange. The app is built using the Flutter framework and incorporates various features to achieve its goals.
+Anvadhi, an android application built with Flutter, is designed to offer a seamless user experience while preserving old art forms, supporting artisans, and fostering cultural exchange. The app incorporates various features, like eye-catchy animations, Geocoding API, and the Flutter Maps API, to achieve its goals.
 
 ### _Authentication_
 
@@ -35,7 +35,7 @@ The app provides a rich browsing experience through its "Art Discovery" feature.
 
 ### _Interactive Map_
 
-The app provides the user a very interactive map where /she can select one or more artworks a place is/was famously known for. The user can also select the artworks restricting the search in a specific timezone. The place user selecs is highlighted with a red marker.
+The app provides the user a very interactive map where they can select one or more artworks a place is famously known for. The user can also select the artworks restricting the search in a specific timeline. The place the user selects is highlighted with a red marker.
 
 ![Interactive Map](./readme_assets/map_search.jpg)
 
@@ -104,4 +104,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 ## Extra
 
-Thank you for your interest in the Anvadhi Flutter app! By contributing to this project, you're not only enhancing your skills but also making a meaningful contribution towards preserving cultural heritage, supporting artisans, and fostering sustainable development through collaboration, financial support, and recognition.
+Thank you for your interest in the Anvadhi Flutter app! By contributing to this project, you're not only enhancing your skills, but also making a meaningful contribution towards preserving cultural heritage, supporting artisans, and fostering sustainable development through collaboration, financial support, and recognition.
