@@ -29,10 +29,10 @@ class ArtsDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     convertGsToHttps();
     return Scaffold(
+        backgroundColor: Colors.purple[50],
         body: LiquidPullToRefresh( onRefresh: _refresh,
         springAnimationDurationInMilliseconds: 1000,
-         color: Colors.deepPurple,
-          backgroundColor: Colors.deepPurple[100],
+         color: Colors.pinkAccent,
           height: 100.0,
           animSpeedFactor: 2,
           showChildOpacityTransition: true,
@@ -41,7 +41,14 @@ class ArtsDisplay extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 40),
-          const Text("Lets Explore the Art World", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
+          const Text(
+            "Lets Explore the Art World!",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w900,
+              color: Colors.deepPurpleAccent
+            ),
+          ),
           const SizedBox(height: 20),
           for (final art in ArtForms)
             artListItem(

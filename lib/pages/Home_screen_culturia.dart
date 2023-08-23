@@ -82,30 +82,30 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
             children: <Widget>[
               Container(
                 width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                ),
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(0, 20.0, 0.0, 0.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     const Center(
                       child: Text(
                         "Welcome to World of Cultures!",
-                        style: TextStyle(color: Colors.pink, fontSize: 25),
+                        style: TextStyle(
+                          color: Colors.deepPurpleAccent,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900
+                        ),
                       ),
                     ),
                     const SizedBox(
-                      height: 15,
-                    ),
-                    const SizedBox(
-                      height: 20,
+                      height: 35,
                     ),
                     Container(
-                      padding: const EdgeInsets.all(5),
+                      width: 300,
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       decoration: BoxDecoration(
                           color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(15)),
+                          borderRadius: BorderRadius.circular(25)),
                       child: const TextField(
                         decoration: InputDecoration(
                             border: InputBorder.none,
@@ -115,7 +115,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                             ),
                             hintText: "Search...",
                             hintStyle:
-                                TextStyle(color: Colors.pink, fontSize: 20)),
+                                TextStyle(color: Colors.deepPurpleAccent, fontSize: 20)),
                       ),
                     ),
                     const SizedBox(

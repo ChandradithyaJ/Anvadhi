@@ -32,7 +32,7 @@ class _PickProfilePicState extends State<PickProfilePic> {
     ];
 
     return Scaffold(
-      backgroundColor: Colors.pinkAccent[300],
+      backgroundColor: Colors.purple[50],
       appBar: AppBar(
         title: const Text("Pick a profile pic!"),
         backgroundColor: Colors.purpleAccent[100],

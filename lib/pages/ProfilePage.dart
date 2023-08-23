@@ -26,6 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
         : user?.displayName;
 
     return Scaffold(
+      backgroundColor: Colors.purple[50],
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
@@ -73,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: const TextStyle(fontSize: 16, height: 1.4),
                 ),
                 const SizedBox(
-                  height: 20.0,
+                  height: 100.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

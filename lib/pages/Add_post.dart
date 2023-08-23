@@ -117,7 +117,7 @@ class _AddpostListState extends State<AddpostList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.purple[50],
       body: ListView(
         padding: const EdgeInsets.all(20.0),
         children: [
@@ -198,6 +198,9 @@ class _AddpostListState extends State<AddpostList> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _pickImage,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.cyan[600]
+                ),
                 child: const Text("Pick Image"),
               ),
               if (_pickedImage.existsSync()) Image.file(File(_pickedImage.path)),
@@ -205,7 +208,7 @@ class _AddpostListState extends State<AddpostList> {
               ElevatedButton(
                 onPressed: _sendToDatabase,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueGrey,
+                  backgroundColor: Colors.purple[500],
                   padding: const EdgeInsets.symmetric(
                     horizontal: 50.0,
                     vertical: 10.0,
