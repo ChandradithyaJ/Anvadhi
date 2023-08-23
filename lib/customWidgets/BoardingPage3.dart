@@ -34,6 +34,7 @@ class _BoardingPage3 extends State<BoardingPage3>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
           Container(

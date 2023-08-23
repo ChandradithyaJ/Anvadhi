@@ -27,6 +27,7 @@ class _BoardingPage2 extends State<BoardingPage2>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
           const Center(

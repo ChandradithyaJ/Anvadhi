@@ -27,6 +27,7 @@ class _BoardingPage1 extends State<BoardingPage1>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: ListView(
         children: <Widget>[
           Padding(

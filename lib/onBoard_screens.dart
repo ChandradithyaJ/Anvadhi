@@ -4,7 +4,6 @@ import './customWidgets/BoardingPage3.dart';
 import 'package:anvadhi/Hidden_draw.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import './services/routes.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
@@ -80,7 +79,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                           child: Text("Skip",
                               style: TextStyle(
                                   fontSize: 20,
-                                  backgroundColor: Colors.lightBlue))),
+                                  ))),
                     ),
                     SmoothPageIndicator(
                       controller: controller,
@@ -105,7 +104,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                                 "Next",
                                 style: TextStyle(
                                     fontSize: 20,
-                                    backgroundColor: Colors.lightBlue),
+                                    ),
                               ),
                             ),
                           )
@@ -128,7 +127,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen>
                                       ));
                                 },
                                 style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.purple[100],
+                                    backgroundColor: Colors.purple[700],
                                     minimumSize: const Size(70.0, 40.0),
                                     maximumSize: const Size(70.0, 40.0)),
                                 child: const Text("Start!")),
