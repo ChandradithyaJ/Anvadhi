@@ -29,8 +29,9 @@ class _ArtDetailsState extends State<ArtDetails> {
     bool bookmarkChanged = false;
 
     if (widget.artForm.isEmpty) {
-      return const Scaffold(
-        body: Center(
+      return Scaffold(
+        backgroundColor: Colors.purple[50],
+        body: const Center(
           child: Text(
             "No art form to display. Please check your internet connection or reload the page.",
             style: TextStyle(
@@ -42,9 +43,10 @@ class _ArtDetailsState extends State<ArtDetails> {
     }
 
     return Scaffold(
+      backgroundColor: Colors.purple[50],
       appBar: AppBar(
         title: Text(widget.artForm['artName']),
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.purple[500],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -85,7 +87,7 @@ class _ArtDetailsState extends State<ArtDetails> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 widget.artForm['description'],
-                style: TextStyle(fontSize: 14, color: Colors.grey[800]),
+                style: TextStyle(fontSize: 16, color: Colors.grey[800]),
                 textAlign: TextAlign.center,
               ),
             ),
