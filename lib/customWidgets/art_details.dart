@@ -121,8 +121,9 @@ class _ArtDetailsState extends State<ArtDetails> {
                       try {
                         String uid = FirebaseAuth.instance.currentUser!.uid;
                         if (!currentUser.bookmarks
-                            .contains(widget.artForm['artName']))
+                            .contains(widget.artForm['artName'])) {
                           currentUser.bookmarks.add(widget.artForm['artName']);
+                        }
                         await FirebaseFirestore.instance
                             .collection('users')
                             .doc(uid)
