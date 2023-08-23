@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:anvadhi/User.dart' as currentUser;
+import 'package:anvadhi/library/User.dart' as currentUser;
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile_detaila1 extends StatelessWidget {
@@ -9,7 +9,8 @@ class Profile_detaila1 extends StatelessWidget {
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          buildButton(context, currentUser.bookmarks.length.toString(), 'Bookmarked courses'),
+          buildButton(context, currentUser.bookmarks.length.toString(),
+              'Bookmarked courses'),
         ],
       );
   Widget buildDivider() => Container(

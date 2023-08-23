@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flutter_map/plugin_api.dart';
-import './art_details.dart';
+import '../customWidgets/art_details.dart';
 
 class MapPage extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
@@ -105,17 +105,20 @@ class _MapPageState extends State<MapPage> {
                   );
                 }).toList(),
               ),
-              const SizedBox(width: 10.0,),
-              Text(
-                widget.selectedArtForm['year'].toString()
+              const SizedBox(
+                width: 10.0,
               ),
-              const SizedBox(width: 20.0,),
+              Text(widget.selectedArtForm['year'].toString()),
+              const SizedBox(
+                width: 20.0,
+              ),
               ElevatedButton(
-                onPressed: (){
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ArtDetails(artForm: widget.selectedArtForm),
+                      builder: (context) =>
+                          ArtDetails(artForm: widget.selectedArtForm),
                     ),
                   );
                 },

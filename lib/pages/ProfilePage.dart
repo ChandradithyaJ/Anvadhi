@@ -1,16 +1,17 @@
-import 'package:anvadhi/customWidgets/auth_page.dart';
+import 'package:anvadhi/auth_page.dart';
 import 'package:anvadhi/customWidgets/profile_Widget.dart';
 import 'package:flutter/material.dart';
 import "package:anvadhi/customWidgets/Profile_detaila1.dart";
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:anvadhi/User.dart' as currentUser;
-import './components/pick_profile_pic.dart';
+import 'package:anvadhi/library/User.dart' as currentUser;
+import '../components/pick_profile_pic.dart';
 
 class ProfilePage extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
   List<Map<String, dynamic>> ArtForms;
 
-  ProfilePage({ required this.ArtForms, required this.selectedArtForm }) : super();
+  ProfilePage({required this.ArtForms, required this.selectedArtForm})
+      : super();
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -20,7 +21,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-    String? displayName = currentUser.displayName != '' ? currentUser.displayName : user?.displayName;
+    String? displayName = currentUser.displayName != ''
+        ? currentUser.displayName
+        : user?.displayName;
 
     return Scaffold(
       body: ListView(
@@ -32,11 +35,11 @@ class _ProfilePageState extends State<ProfilePage> {
               imagePath: user?.photoURL ?? currentUser.defaultImage,
               onClicked: () async {
                 Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PickProfilePic(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm)
-                  )
-                );
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PickProfilePic(
+                            ArtForms: widget.ArtForms,
+                            selectedArtForm: widget.selectedArtForm)));
               },
             ),
           ),
@@ -46,8 +49,8 @@ class _ProfilePageState extends State<ProfilePage> {
               Text(
                 displayName ?? 'Guest user',
                 style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
               )
             ],
@@ -69,12 +72,14 @@ class _ProfilePageState extends State<ProfilePage> {
                   user?.email ?? 'Learn anonymously too!',
                   style: const TextStyle(fontSize: 16, height: 1.4),
                 ),
-                const SizedBox(height: 20.0,),
+                const SizedBox(
+                  height: 20.0,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      onPressed: (){
+                      onPressed: () {
                         FirebaseAuth.instance.signOut();
                         currentUser.displayName = '';
                         currentUser.bookmarks = [];
@@ -82,15 +87,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         currentUser.uid = '';
                         currentUser.getFirestore = false;
                         Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) =>
-                              AuthPage(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm),
-                          )
-                        );
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AuthPage(
+                                  ArtForms: widget.ArtForms,
+                                  selectedArtForm: widget.selectedArtForm),
+                            ));
                       },
-                      child: const Icon(
-                        Icons.logout_outlined
-                      ),
+                      child: const Icon(Icons.logout_outlined),
                     )
                   ],
                 )

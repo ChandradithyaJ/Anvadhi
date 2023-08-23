@@ -5,7 +5,7 @@ import '../components//my_button.dart';
 import '../components/square_tile.dart';
 import '../services/auth_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:anvadhi/User.dart' as currentUser;
+import 'package:anvadhi/library/User.dart' as currentUser;
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
 
   // sign user in method
   void signUserIn() async {
-    //loading circle
+    // loading circle
     showDialog(
       context: context,
       builder: (context) {
@@ -34,21 +34,23 @@ class _LoginPageState extends State<LoginPage> {
 
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text,
-          password: passwordController.text);
+          email: emailController.text, password: passwordController.text);
       final usersRef = FirebaseFirestore.instance.collection('users');
       List<Map<String, dynamic>> reqUsers = [];
-      await usersRef.where("uid", isEqualTo: FirebaseAuth.instance.currentUser?.uid).get().then((snapshot){
+      await usersRef
+          .where("uid", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
+          .get()
+          .then((snapshot) {
         snapshot.docs.forEach((element) {
           reqUsers.add(element.data());
         });
       });
       Map<String, dynamic> reqUser = reqUsers[0];
 
+      // update library variables
       currentUser.displayName = reqUser['displayName'];
       currentUser.bookmarks = reqUser['bookmarks'];
       currentUser.defaultImage = reqUser['defaultImage'];
-      print(currentUser.bookmarks);
       currentUser.uid = FirebaseAuth.instance.currentUser?.uid;
       currentUser.email = emailController.text;
       currentUser.getFirestore = true;
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
       showErrorMessage(e.code);
-      //invalid credentials
+      // invalid credentials
     }
   }
 
@@ -79,7 +81,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.blue[300],
       body: SingleChildScrollView(
@@ -88,7 +89,6 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 50),
-
               // logo
               const Icon(
                 Icons.lock,
@@ -98,7 +98,6 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 50),
 
               const SizedBox(height: 25),
-
               // username textfield
               MyTextField(
                 controller: emailController,

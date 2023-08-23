@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:anvadhi/Arts_display.dart';
-import 'package:anvadhi/User.dart' as currentUser;
+import './Arts_display.dart';
+import 'package:anvadhi/library/User.dart' as currentUser;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -20,7 +20,8 @@ class Home_screen_culturia extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
   List<Map<String, dynamic>> ArtForms;
 
-  Home_screen_culturia({ required this.ArtForms, required this.selectedArtForm }) : super();
+  Home_screen_culturia({required this.ArtForms, required this.selectedArtForm})
+      : super();
 
   @override
   State<Home_screen_culturia> createState() => _Home_screen_culturiaState();
@@ -40,12 +41,14 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
 
   @override
   Widget build(BuildContext context) {
-
     void getUserDetails() async {
-      if(!currentUser.getFirestore){
+      if (!currentUser.getFirestore) {
         final usersRef = FirebaseFirestore.instance.collection('users');
         List<Map<String, dynamic>> reqUsers = [];
-        await usersRef.where("uid", isEqualTo: FirebaseAuth.instance.currentUser?.uid).get().then((snapshot){
+        await usersRef
+            .where("uid", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
+            .get()
+            .then((snapshot) {
           snapshot.docs.forEach((element) {
             reqUsers.add(element.data());
           });
@@ -61,10 +64,12 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
 
     getUserDetails();
     // store all the images in a list
-    List<String> artFormPics = widget.ArtForms.map((artForm) => artForm['image'].toString()).toList();
+    List<String> artFormPics =
+        widget.ArtForms.map((artForm) => artForm['image'].toString()).toList();
     List<String> bookmarked = [];
-    for(dynamic artForm in widget.ArtForms){
-      if(currentUser.bookmarks.contains(artForm['artName'])) bookmarked.add(artForm['image']);
+    for (dynamic artForm in widget.ArtForms) {
+      if (currentUser.bookmarks.contains(artForm['artName']))
+        bookmarked.add(artForm['image']);
     }
 
     return Scaffold(
@@ -153,8 +158,8 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                   children: <Widget>[
                                     Expanded(
                                       child: FutureBuilder(
-                                        future: _getImage(context,
-                                            artFormPics[index]),
+                                        future: _getImage(
+                                            context, artFormPics[index]),
                                         builder: (context, snapshot) {
                                           if (snapshot.connectionState ==
                                               ConnectionState.done) {
@@ -174,10 +179,12 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                             return Container(
                                               height: MediaQuery.of(context)
                                                       .size
-                                                      .height/1.25,
+                                                      .height /
+                                                  1.25,
                                               width: MediaQuery.of(context)
                                                       .size
-                                                      .width/1.25,
+                                                      .width /
+                                                  1.25,
                                               child:
                                                   const CircularProgressIndicator(),
                                             );
@@ -216,10 +223,10 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                             ),
                             onPressed: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                      ArtsDisplay(ArtForms: widget.ArtForms,
-                                          selectedArtForm: widget.selectedArtForm)
-                                )),
+                                    builder: (context) => ArtsDisplay(
+                                        ArtForms: widget.ArtForms,
+                                        selectedArtForm:
+                                            widget.selectedArtForm))),
                           ),
                         ),
                       ),
@@ -230,14 +237,15 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                         height: 200,
                         child: ListView(
                           children: <Widget>[
-                            if(bookmarked.length > 0)...[
+                            if (bookmarked.length > 0) ...[
                               CarouselSlider.builder(
                                 options: CarouselOptions(
                                   height: 200,
                                   scrollDirection: Axis.horizontal,
                                   autoPlay: true,
                                   enlargeCenterPage: true,
-                                  autoPlayInterval: const Duration(seconds: 200),
+                                  autoPlayInterval:
+                                      const Duration(seconds: 200),
                                 ),
                                 itemCount: bookmarked.length,
                                 itemBuilder: (context, index, realIndex) {
@@ -245,33 +253,36 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                     children: <Widget>[
                                       Expanded(
                                         child: FutureBuilder(
-                                          future: _getImage(context,
-                                              bookmarked[index]),
+                                          future: _getImage(
+                                              context, bookmarked[index]),
                                           builder: (context, snapshot) {
                                             if (snapshot.connectionState ==
                                                 ConnectionState.done) {
                                               return Container(
                                                 height: MediaQuery.of(context)
-                                                    .size
-                                                    .height /
+                                                        .size
+                                                        .height /
                                                     1.25,
                                                 width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
+                                                        .size
+                                                        .width /
                                                     1.25,
                                                 child: snapshot.data,
                                               );
-                                            } else if (snapshot.connectionState ==
+                                            } else if (snapshot
+                                                    .connectionState ==
                                                 ConnectionState.waiting) {
                                               return Container(
                                                 height: MediaQuery.of(context)
-                                                    .size
-                                                    .height/1.25,
+                                                        .size
+                                                        .height /
+                                                    1.25,
                                                 width: MediaQuery.of(context)
-                                                    .size
-                                                    .width/1.25,
+                                                        .size
+                                                        .width /
+                                                    1.25,
                                                 child:
-                                                const CircularProgressIndicator(),
+                                                    const CircularProgressIndicator(),
                                               );
                                             } else {
                                               // CircularProgressIndicator();
@@ -284,13 +295,11 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                   );
                                 },
                               ),
-                            ] else...[
+                            ] else ...[
                               const Center(
                                 child: Text(
                                   "Bookmark an art form to learn now!",
-                                  style: TextStyle(
-                                    color: Colors.deepOrange
-                                  ),
+                                  style: TextStyle(color: Colors.deepOrange),
                                 ),
                               )
                             ]

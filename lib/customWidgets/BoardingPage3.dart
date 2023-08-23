@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_cube/flutter_cube.dart';
-import './Hidden_draw.dart';
+import '../Hidden_draw.dart';
 
 class BoardingPage3 extends StatefulWidget {
   List<Map<String, dynamic>> ArtForms;

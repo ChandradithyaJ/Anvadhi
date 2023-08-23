@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import './customWidgets/art_details.dart';
+import '../customWidgets/art_details.dart';
 
 class ArtsDisplay extends StatelessWidget {
 

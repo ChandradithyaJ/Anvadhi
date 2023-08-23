@@ -1,9 +1,9 @@
-import 'package:anvadhi/BoardingPage1.dart';
-import 'package:anvadhi/BoardingPage2.dart';
+import './customWidgets/BoardingPage1.dart';
+import './customWidgets/BoardingPage2.dart';
+import './customWidgets/BoardingPage3.dart';
 import 'package:anvadhi/Hidden_draw.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:anvadhi/BoardingPage3.dart';
 import './services/routes.dart';
 
 class OnBoardingScreen extends StatefulWidget {

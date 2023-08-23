@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import '../services/firestore_images.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:anvadhi/User.dart' as currentUser;
+import 'package:anvadhi/library/User.dart' as currentUser;
 import 'package:firebase_storage/firebase_storage.dart';
 
 class ArtDetails extends StatefulWidget {
   Map<String, dynamic> artForm = {};
 
-  ArtDetails({ required this.artForm }) : super();
+  ArtDetails({required this.artForm}) : super();
 
   @override
   State<ArtDetails> createState() => _ArtDetailsState();
 }
 
 class _ArtDetailsState extends State<ArtDetails> {
-
   Future<Widget> _getImage(BuildContext context, String image) async {
     final storage = FirebaseStorage.instance;
     final ref = storage.ref().child(image);
@@ -28,10 +26,9 @@ class _ArtDetailsState extends State<ArtDetails> {
 
   @override
   Widget build(BuildContext context) {
-
     bool bookmarkChanged = false;
 
-    if(widget.artForm.isEmpty){
+    if (widget.artForm.isEmpty) {
       return const Scaffold(
         body: Center(
           child: Text(
@@ -59,33 +56,20 @@ class _ArtDetailsState extends State<ArtDetails> {
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   child: FutureBuilder(
-                    future: _getImage(context,
-                        widget.artForm['image']),
+                    future: _getImage(context, widget.artForm['image']),
                     builder: (context, snapshot) {
-                      if (snapshot.connectionState ==
-                          ConnectionState.done) {
+                      if (snapshot.connectionState == ConnectionState.done) {
                         return Container(
-                          height: MediaQuery.of(context)
-                              .size
-                              .height /
-                              1.25,
-                          width: MediaQuery.of(context)
-                              .size
-                              .width /
-                              1.25,
+                          height: MediaQuery.of(context).size.height / 1.25,
+                          width: MediaQuery.of(context).size.width / 1.25,
                           child: snapshot.data,
                         );
                       } else if (snapshot.connectionState ==
                           ConnectionState.waiting) {
                         return Container(
-                          height: MediaQuery.of(context)
-                              .size
-                              .height/1.25,
-                          width: MediaQuery.of(context)
-                              .size
-                              .width/1.25,
-                          child:
-                          const CircularProgressIndicator(),
+                          height: MediaQuery.of(context).size.height / 1.25,
+                          width: MediaQuery.of(context).size.width / 1.25,
+                          child: const CircularProgressIndicator(),
                         );
                       } else {
                         // CircularProgressIndicator();
@@ -110,7 +94,8 @@ class _ArtDetailsState extends State<ArtDetails> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 'Location: ${widget.artForm['location']}',
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -127,15 +112,19 @@ class _ArtDetailsState extends State<ArtDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if(!currentUser.bookmarks.contains(widget.artForm['artName']))...[
+                if (!currentUser.bookmarks
+                    .contains(widget.artForm['artName'])) ...[
                   ElevatedButton(
                     onPressed: () async {
-                      try{
+                      try {
                         String uid = FirebaseAuth.instance.currentUser!.uid;
-                        if(!currentUser.bookmarks.contains(widget.artForm['artName'])) currentUser.bookmarks.add(widget.artForm['artName']);
-                        await FirebaseFirestore.instance.collection('users').doc(uid).update({
-                          'bookmarks': currentUser.bookmarks
-                        });
+                        if (!currentUser.bookmarks
+                            .contains(widget.artForm['artName']))
+                          currentUser.bookmarks.add(widget.artForm['artName']);
+                        await FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(uid)
+                            .update({'bookmarks': currentUser.bookmarks});
                         setState(() {
                           bookmarkChanged = !bookmarkChanged;
                         });
@@ -143,19 +132,21 @@ class _ArtDetailsState extends State<ArtDetails> {
                         print('Error adding bookmark: $err');
                       }
                     },
-                    child: const Icon(
-                        Icons.bookmark_add_outlined
-                    ),
+                    child: const Icon(Icons.bookmark_add_outlined),
                   ),
-                ]else...[
+                ] else ...[
                   ElevatedButton(
                     onPressed: () async {
-                      try{
+                      try {
                         String uid = FirebaseAuth.instance.currentUser!.uid;
-                        if(currentUser.bookmarks.contains(widget.artForm['artName']))currentUser.bookmarks.remove(widget.artForm['artName']);
-                        await FirebaseFirestore.instance.collection('users').doc(uid).update({
-                          'bookmarks': currentUser.bookmarks
-                        });
+                        if (currentUser.bookmarks
+                            .contains(widget.artForm['artName']))
+                          currentUser.bookmarks
+                              .remove(widget.artForm['artName']);
+                        await FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(uid)
+                            .update({'bookmarks': currentUser.bookmarks});
                         setState(() {
                           bookmarkChanged = !bookmarkChanged;
                         });
@@ -163,9 +154,7 @@ class _ArtDetailsState extends State<ArtDetails> {
                         print('Error deleting bookmark: $err');
                       }
                     },
-                    child: const Icon(
-                        Icons.remove_circle
-                    ),
+                    child: const Icon(Icons.remove_circle),
                   )
                 ]
               ],

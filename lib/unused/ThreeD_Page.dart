@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_cube/flutter_cube.dart';
-import 'Arts_display.dart';
+import '../pages/Arts_display.dart';
+
 class CombinedPage extends StatefulWidget {
   Map<String, dynamic> selectedArtForm;
   List<Map<String, dynamic>> ArtForms;
 
-  CombinedPage({ required this.ArtForms, required this.selectedArtForm }) : super();
+  CombinedPage({required this.ArtForms, required this.selectedArtForm})
+      : super();
 
   @override
   _CombinedPageState createState() => _CombinedPageState();
@@ -61,7 +63,11 @@ class _CombinedPageState extends State<CombinedPage>
               // navigate to the arts page
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ArtsDisplay(ArtForms: widget.ArtForms, selectedArtForm: widget.selectedArtForm)),);
+                MaterialPageRoute(
+                    builder: (context) => ArtsDisplay(
+                        ArtForms: widget.ArtForms,
+                        selectedArtForm: widget.selectedArtForm)),
+              );
             },
             child: Container(
               height: 300, // Adjust the height as needed
@@ -77,7 +83,8 @@ class _CombinedPageState extends State<CombinedPage>
                               'lib/assets/images/model/Model_culturia/Culturia_text.obj',
                           backfaceCulling: true);
                       double scaleFactor = 1;
-                      object.scale.setValues(scaleFactor, scaleFactor, scaleFactor);
+                      object.scale
+                          .setValues(scaleFactor, scaleFactor, scaleFactor);
                       object.rotation.setValues(0, 50, 0);
                       object.position.setValues(1.5, 0, 1);
                       object.updateTransform();
@@ -96,5 +103,3 @@ class _CombinedPageState extends State<CombinedPage>
     );
   }
 }
-
-

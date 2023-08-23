@@ -5,7 +5,7 @@ import '../components//my_button.dart';
 import '../components/square_tile.dart';
 import '../services/auth_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:anvadhi/User.dart' as currentUser;
+import 'package:anvadhi/library/User.dart' as currentUser;
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -37,8 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
     try {
       if (passwordController.text == confirmPasswordController.text) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: emailController.text,
-            password: passwordController.text);
+            email: emailController.text, password: passwordController.text);
         Map<String, dynamic> user = {
           'uid': FirebaseAuth.instance.currentUser?.uid,
           'bookmarks': [],
@@ -46,16 +45,20 @@ class _RegisterPageState extends State<RegisterPage> {
           'email': emailController.text
         };
         String? uid = FirebaseAuth.instance.currentUser?.uid;
-        await FirebaseFirestore.instance.collection('users').doc(uid).set(user, SetOptions(merge: true));
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(uid)
+            .set(user, SetOptions(merge: true));
 
         final usersRef = FirebaseFirestore.instance.collection('users');
         List<Map<String, dynamic>> allUsers = [];
         await usersRef.get().then((snapshot) => {
-          snapshot.docs.forEach((element) {
-            allUsers.add(element.data());
-          })
-        });
-        Map<String, dynamic> reqUser = allUsers.firstWhere((element) => element['uid'] == FirebaseAuth.instance.currentUser?.uid);
+              snapshot.docs.forEach((element) {
+                allUsers.add(element.data());
+              })
+            });
+        Map<String, dynamic> reqUser = allUsers.firstWhere((element) =>
+            element['uid'] == FirebaseAuth.instance.currentUser?.uid);
 
         currentUser.displayName = reqUser['displayName'];
         currentUser.bookmarks = reqUser['bookmarks'];

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:anvadhi/User.dart' as currentUser;
+import 'package:anvadhi/library/User.dart' as currentUser;
 
 class AuthService {
   signInWithGoogle() async {
@@ -26,17 +26,24 @@ class AuthService {
       'email': FirebaseAuth.instance.currentUser?.email
     };
     String? uid = FirebaseAuth.instance.currentUser?.uid;
-    dynamic reqDoc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
-    if(!reqDoc.exists()) await FirebaseFirestore.instance.collection('users').doc(uid).set(user, SetOptions(merge: true));
+    dynamic reqDoc =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    if (!reqDoc.exists()) {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .set(user, SetOptions(merge: true));
+    }
 
     final usersRef = FirebaseFirestore.instance.collection('artForms');
     List<Map<String, dynamic>> allUsers = [];
     await usersRef.get().then((snapshot) => {
-      snapshot.docs.forEach((element) {
-        allUsers.add(element.data());
-      })
-    });
-    Map<String, dynamic> reqUser = allUsers.firstWhere((element) => element['uid'] == FirebaseAuth.instance.currentUser?.uid);
+          snapshot.docs.forEach((element) {
+            allUsers.add(element.data());
+          })
+        });
+    Map<String, dynamic> reqUser = allUsers.firstWhere(
+        (element) => element['uid'] == FirebaseAuth.instance.currentUser?.uid);
 
     currentUser.displayName = FirebaseAuth.instance.currentUser?.displayName;
     currentUser.uid = FirebaseAuth.instance.currentUser?.uid;
