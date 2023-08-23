@@ -90,16 +90,6 @@ class _Hidden_draww extends State<Hidden_draww> {
         ),
         ReportPage(),
       ),
-      // ScreenHiddenDrawer(
-      //   ItemHiddenMenu(
-      //     name: "onBoard",
-      //     colorLineSelected: Colors.purpleAccent,
-      //     baseStyle:
-      //     TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 28.0),
-      //     selectedStyle: TextStyle(color: Colors.orange),
-      //   ),
-      //   OnBoardingScreen(),
-      // ),
     ];
   }
 
@@ -107,7 +97,7 @@ class _Hidden_draww extends State<Hidden_draww> {
   Widget build(BuildContext context) {
     return HiddenDrawerMenu(
       backgroundColorMenu: Colors.purple,
-      backgroundColorAppBar: Colors.purple[100],
+      backgroundColorAppBar: Colors.purple[600],
       screens: _pages,
       withShadow: true,
       slidePercent: 80.0,
@@ -118,7 +108,7 @@ class _Hidden_draww extends State<Hidden_draww> {
         IconButton(
           icon: const Icon(
             Icons.search,
-            color: Colors.pink,
+            color: Colors.white,
           ),
           onPressed: () {
             Navigator.push(
@@ -132,7 +122,7 @@ class _Hidden_draww extends State<Hidden_draww> {
         IconButton(
           icon: const Icon(
             Icons.add,
-            color: Colors.pink,
+            color: Colors.white,
           ),
           onPressed: () {
             Navigator.push(
@@ -145,7 +135,7 @@ class _Hidden_draww extends State<Hidden_draww> {
       ],
       verticalScalePercent: 80.0,
       contentCornerRadius: 40.0,
-      leadingAppBar: const Icon(Icons.menu, color: Colors.pink),
+      leadingAppBar: const Icon(Icons.menu, color: Colors.white),
     );
   }
 }

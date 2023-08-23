@@ -25,7 +25,7 @@ class ReportPageState extends State<ReportPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 251, 211, 211),
+      backgroundColor: Colors.purple[50],
       body: ListView(
         padding: const EdgeInsets.all(20.0),
         children: [
@@ -75,7 +75,7 @@ class ReportPageState extends State<ReportPage> {
               ElevatedButton(
                 onPressed: _sendToDatabase,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueGrey,
+                  backgroundColor: Colors.cyan[600],
                   padding: const EdgeInsets.symmetric(
                     horizontal: 40.0,
                     vertical: 20.0,

@@ -82,10 +82,13 @@ class _AddpostListState extends State<AddpostList> {
       lng = locations[0].longitude;
     }
 
+    int? enteredYear = int.tryParse(year);
+    enteredYear = (enteredYear !>= 2000) ? 1999 : enteredYear;
+
     Map<String, dynamic> createArtFormEntry = {
       'artName': name,
       'artistName': artistName,
-      'year': int.tryParse(year),
+      'year': enteredYear,
       'latlong': GeoPoint(lat, lng),
       'description': description,
       'artFormId': widget.ArtForms.length + 1,

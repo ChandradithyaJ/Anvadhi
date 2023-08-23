@@ -210,8 +210,7 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                           child: ElevatedButton(
                             child: const Text('Bookmarked'),
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.purple[300],
-                              onPrimary: Colors.white,
+                              backgroundColor: Colors.purple[600],
                               textStyle: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 25,
@@ -229,9 +228,6 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
                                             widget.selectedArtForm))),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
                       ),
                       Container(
                         height: 200,
