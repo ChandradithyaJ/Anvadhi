@@ -1,3 +1,5 @@
+/// Side menu for routing (not used)
+
 import 'package:anvadhi/services/routes.dart';
 import 'package:flutter/material.dart';
 

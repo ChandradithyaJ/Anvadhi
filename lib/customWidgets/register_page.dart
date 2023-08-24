@@ -34,6 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
       },
     );
 
+    // update user info in the cloud firestore database and locally
     try {
       if (passwordController.text == confirmPasswordController.text) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -75,6 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
+  // error message if anything is invalid
   void showErrorMessage(String message) {
     showDialog(
       context: context,

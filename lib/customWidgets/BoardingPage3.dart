@@ -1,3 +1,5 @@
+/// Animation for the on boarding screen
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_cube/flutter_cube.dart';

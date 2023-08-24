@@ -1,3 +1,5 @@
+/// Profile page
+
 import 'package:anvadhi/auth_page.dart';
 import 'package:anvadhi/customWidgets/profile_Widget.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +22,8 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+
+    // fetch user uid
     final user = FirebaseAuth.instance.currentUser;
     String? displayName = currentUser.displayName != ''
         ? currentUser.displayName
@@ -33,6 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: ProfileWidget(
+              // display user's google pic or custom pic
               imagePath: user?.photoURL ?? currentUser.defaultImage,
               onClicked: () async {
                 Navigator.push(
@@ -81,12 +86,15 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
+                        // reset global variables when signed out
                         FirebaseAuth.instance.signOut();
                         currentUser.displayName = '';
                         currentUser.bookmarks = [];
                         currentUser.email = '';
                         currentUser.uid = '';
                         currentUser.getFirestore = false;
+
+                        // reroute to the routing page
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(

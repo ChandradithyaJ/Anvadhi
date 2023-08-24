@@ -1,13 +1,14 @@
+/// Home page
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import './Arts_display.dart';
 import 'package:anvadhi/library/User.dart' as currentUser;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-//firebase stuff
 import 'package:firebase_storage/firebase_storage.dart';
 
+// fetching a image from firebase storage
 class FireStorageService {
   FireStorageService._();
 
@@ -30,6 +31,7 @@ class Home_screen_culturia extends StatefulWidget {
 class _Home_screen_culturiaState extends State<Home_screen_culturia> {
   final storage = FirebaseStorage.instance;
 
+  // fetching a image from firebase storage
   Future<Widget> _getImage(BuildContext context, String image) async {
     final ref = storage.ref().child(image);
     final downloadUrl = await ref.getDownloadURL();
@@ -41,6 +43,8 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
 
   @override
   Widget build(BuildContext context) {
+
+    // fetch user details if not fetched already
     void getUserDetails() async {
       if (!currentUser.getFirestore) {
         final usersRef = FirebaseFirestore.instance.collection('users');
@@ -63,15 +67,18 @@ class _Home_screen_culturiaState extends State<Home_screen_culturia> {
     }
 
     getUserDetails();
+
     // store all the images in a list
     List<String> artFormPics =
         widget.ArtForms.map((artForm) => artForm['image'].toString()).toList();
+    // get the bookmarked art forms images
     List<String> bookmarked = [];
     for (dynamic artForm in widget.ArtForms) {
       if (currentUser.bookmarks.contains(artForm['artName']))
         bookmarked.add(artForm['image']);
     }
 
+    // carousel sliders to display images are present
     return Scaffold(
       backgroundColor: Colors.purple[50],
       body: SafeArea(

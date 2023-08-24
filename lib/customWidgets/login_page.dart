@@ -32,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
       },
     );
 
+    // get the stored user details after sign in
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
@@ -62,6 +63,7 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  // Show an error message if there is anything wrong
   void showErrorMessage(String message) {
     showDialog(
       context: context,

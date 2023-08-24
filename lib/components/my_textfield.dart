@@ -1,3 +1,5 @@
+/// Text fields on the authentication page
+
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {

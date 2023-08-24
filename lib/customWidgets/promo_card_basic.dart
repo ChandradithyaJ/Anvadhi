@@ -1,3 +1,5 @@
+/// Promo card for the Learn page
+
 import 'package:flutter/material.dart';
 
 Widget promoCardBasic(image, text, progress_percent) {
@@ -5,7 +7,7 @@ Widget promoCardBasic(image, text, progress_percent) {
     aspectRatio: 2.62/3,
     child: Container(
       clipBehavior: Clip.hardEdge,
-      margin: EdgeInsets.only(right: 15.0),
+      margin: const EdgeInsets.only(right: 15.0),
       decoration: BoxDecoration(
         color: Colors.orange,
         borderRadius: BorderRadius.circular(10),

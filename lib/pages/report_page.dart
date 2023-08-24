@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
+/// Report page
 
-void main() {
-  runApp(MaterialApp(
-    home: ReportPage(),
-  ));
-}
+import 'package:flutter/material.dart';
 
 class ReportPage extends StatefulWidget {
   @override

@@ -1,3 +1,5 @@
+/// Global variables to store and use the current user's info
+
 library user;
 
 String? uid = '';

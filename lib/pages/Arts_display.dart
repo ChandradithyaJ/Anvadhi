@@ -1,3 +1,5 @@
+/// Learn page
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -15,6 +17,7 @@ class ArtsDisplay extends StatelessWidget {
     await Future.delayed(const Duration(seconds: 2));
   }
 
+  // convert the gs link to an https link
   Future<void> convertGsToHttps() async {
     for (var artItem in ArtForms) {
       if (artItem['image'].startsWith('gs://')) {
@@ -65,6 +68,7 @@ class ArtsDisplay extends StatelessWidget {
   }
 }
 
+// each art form is displayed in this format
 class artListItem extends StatelessWidget {
 
   artListItem({
@@ -83,6 +87,8 @@ class artListItem extends StatelessWidget {
    
   @override
   Widget build(BuildContext context) {
+
+    // go to a details page on tap
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -102,6 +108,7 @@ class artListItem extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16),
                 child: Stack(
+                  // eye-catchy scrolling animation
                   children: [
                     _buildPlxBackground(context),
                     _buildGradient(),

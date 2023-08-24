@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+/// for clickable google sign in button
 
-//for clickable google sign in button
+import 'package:flutter/material.dart';
 
 class SquareTile extends StatelessWidget {
   final String imagePath;

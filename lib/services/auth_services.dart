@@ -19,6 +19,7 @@ class AuthService {
 
     await FirebaseAuth.instance.signInWithCredential(credential);
 
+    // add the user to the database
     Map<String, dynamic> user = {
       'uid': FirebaseAuth.instance.currentUser?.uid,
       'bookmarks': [],

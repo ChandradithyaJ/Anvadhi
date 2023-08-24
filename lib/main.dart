@@ -5,11 +5,14 @@ import 'firebase_options.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 void main() async {
+
+  /** Connecting app to Firebase **/
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  // state variable used in the app
   List<Map<String, dynamic>> ArtForms = [];
   Map<String, dynamic> selectedArtForm = {};
 
@@ -28,6 +31,7 @@ void main() async {
     print('Error loading documents: $err');
   }
 
+  /** fetch the art forms if there are any changes **/
   artFormsRef.snapshots().listen(
     (snapshot) {
       ArtForms.clear();

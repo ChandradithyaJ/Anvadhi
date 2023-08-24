@@ -1,3 +1,5 @@
+/// Page to display a single art form and its details
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,6 +16,8 @@ class ArtDetails extends StatefulWidget {
 }
 
 class _ArtDetailsState extends State<ArtDetails> {
+
+  // fetch the required image from Firebase storage
   Future<Widget> _getImage(BuildContext context, String image) async {
     final storage = FirebaseStorage.instance;
     final ref = storage.ref().child(image);
@@ -28,6 +32,7 @@ class _ArtDetailsState extends State<ArtDetails> {
   Widget build(BuildContext context) {
     bool bookmarkChanged = false;
 
+    // Error handling
     if (widget.artForm.isEmpty) {
       return Scaffold(
         backgroundColor: Colors.purple[50],
@@ -114,10 +119,12 @@ class _ArtDetailsState extends State<ArtDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // if else conditions to display add/remove bookmark
                 if (!currentUser.bookmarks
                     .contains(widget.artForm['artName'])) ...[
                   ElevatedButton(
                     onPressed: () async {
+                      // update the change in the local and cloud firestore databases
                       try {
                         String uid = FirebaseAuth.instance.currentUser!.uid;
                         if (!currentUser.bookmarks
@@ -140,12 +147,14 @@ class _ArtDetailsState extends State<ArtDetails> {
                 ] else ...[
                   ElevatedButton(
                     onPressed: () async {
+                      // update the change in the local and cloud firestore databases
                       try {
                         String uid = FirebaseAuth.instance.currentUser!.uid;
                         if (currentUser.bookmarks
-                            .contains(widget.artForm['artName']))
+                            .contains(widget.artForm['artName'])) {
                           currentUser.bookmarks
                               .remove(widget.artForm['artName']);
+                        }
                         await FirebaseFirestore.instance
                             .collection('users')
                             .doc(uid)

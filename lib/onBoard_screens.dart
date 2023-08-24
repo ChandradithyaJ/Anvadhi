@@ -1,3 +1,5 @@
+/// Animated landing page
+
 import './customWidgets/BoardingPage1.dart';
 import './customWidgets/BoardingPage2.dart';
 import './customWidgets/BoardingPage3.dart';

@@ -1,3 +1,5 @@
+/// Contains the code for the buttons on the authentication pages
+
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {

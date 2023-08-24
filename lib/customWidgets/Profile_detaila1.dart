@@ -1,3 +1,5 @@
+/// Widget for the bookmarked courses part of the profile page
+
 import 'package:flutter/material.dart';
 import 'package:anvadhi/library/User.dart' as currentUser;
 import 'package:firebase_auth/firebase_auth.dart';
@@ -29,12 +31,12 @@ class Profile_detaila1 extends StatelessWidget {
           children: <Widget>[
             Text(
               value,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ],
         ),

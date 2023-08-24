@@ -14,6 +14,7 @@ class _LoadFirebaseStorageImageState extends State<LoadFirebaseStorageImage> {
   bool showImage = false;
   final storage = FirebaseStorage.instance;
 
+  // convert gs link to https link
   Future<void> convertGsToHttps(String imageURL) async {
     if (imageURL.startsWith('gs://')) {
       var gsReference = FirebaseStorage.instance.refFromURL(imageURL);
@@ -22,6 +23,7 @@ class _LoadFirebaseStorageImageState extends State<LoadFirebaseStorageImage> {
     }
   }
 
+  // get image from firebase storage
   Future<void> getImage() async {
     convertGsToHttps(widget.image);
     final ref = storage.ref().child(widget.image);

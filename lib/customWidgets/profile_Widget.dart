@@ -1,3 +1,5 @@
+///  Widgets to build the circular profile pic and edit button
+
 import 'package:flutter/material.dart';
 
 class ProfileWidget extends StatelessWidget {

@@ -1,9 +1,13 @@
+/// Share your art form page
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geocoding/geocoding.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+
+// class to store locally
 
 class Post {
   final String name;
@@ -31,6 +35,7 @@ class AddpostList extends StatefulWidget {
 }
 
 class _AddpostListState extends State<AddpostList> {
+  // controllers to get inputs
   final TextEditingController nameController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
   final TextEditingController descController = TextEditingController();
@@ -42,6 +47,7 @@ class _AddpostListState extends State<AddpostList> {
   File _pickedImage = new File ('');
   List<Post> posts = [];
 
+  // get an input image
   void _pickImage() async {
     XFile? pickedImage;
     try {
@@ -55,6 +61,7 @@ class _AddpostListState extends State<AddpostList> {
     });
   }
 
+  // update in the database
   void _sendToDatabase() async {
     String name = nameController.text;
     String location = locationController.text;
@@ -75,6 +82,7 @@ class _AddpostListState extends State<AddpostList> {
     final artFormsRef = FirebaseFirestore.instance.collection('artForms');
     final storage = FirebaseStorage.instance.ref();
 
+    // convert location name to co-ordinates
     List<Location> locations = await locationFromAddress(location);
     double lat = 0, lng = 0;
     if(locations.isNotEmpty){
@@ -82,6 +90,7 @@ class _AddpostListState extends State<AddpostList> {
       lng = locations[0].longitude;
     }
 
+    // check if the year is in bounds
     int? enteredYear = int.tryParse(year);
     enteredYear = (enteredYear !>= 2000) ? 1999 : enteredYear;
 
@@ -96,6 +105,7 @@ class _AddpostListState extends State<AddpostList> {
       'image': _pickedImage.path.split("/").last
     };
 
+    // update in cloud firestore and firebase storage
     try{
       await artFormsRef.doc(name).set(createArtFormEntry, SetOptions(merge: true));
       final imageRef = storage.child("${_pickedImage.path.split("/").last}");
@@ -104,11 +114,13 @@ class _AddpostListState extends State<AddpostList> {
       print(e);
     }
 
+    // reset the fields
     setState(() {
       posts.add(newPost);
       _pickedImage = new File('');
     });
 
+    // clear the controllers to dispose the inputs
     nameController.clear();
     locationController.clear();
     descController.clear();
