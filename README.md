@@ -81,6 +81,8 @@ The Anvadhi app contributes to the Sustainable Development Goals (SDGs) by promo
 
 ## Setup Instructions & Generating APK
 
+`The minimum requirement of Android version is API 24 / Nougat / Android 7.0 but better supported in latest API 34 / Tiramisu / Android 13` 
+
 To set up the Anvadhi app locally and generate an APK, follow these steps:
 
 1. _Clone Repository:_ Clone this repository to your local machine using `git clone`.
