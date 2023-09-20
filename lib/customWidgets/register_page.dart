@@ -76,6 +76,56 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
+  void signUserWithGoogle() async {
+    try {
+      AuthService().signInWithGoogle();
+      Map<String, dynamic> user = {
+        'uid': FirebaseAuth.instance.currentUser?.uid,
+        'bookmarks': [],
+        'displayName': FirebaseAuth.instance.currentUser?.displayName,
+        'email': emailController.text
+      };
+      String? uid = FirebaseAuth.instance.currentUser?.uid;
+      final usersRef = FirebaseFirestore.instance.collection('users');
+
+      List<Map<String, dynamic>> reqUsers = [];
+      await usersRef
+          .where("uid", isEqualTo: FirebaseAuth.instance.currentUser?.uid)
+          .get()
+          .then((snapshot) {
+        snapshot.docs.forEach((element) {
+          reqUsers.add(element.data());
+        });
+      });
+
+      if(reqUsers.isEmpty) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(uid)
+            .set(user, SetOptions(merge: true));
+      }
+
+      List<Map<String, dynamic>> allUsers = [];
+      await usersRef.get().then((snapshot) => {
+        snapshot.docs.forEach((element) {
+          allUsers.add(element.data());
+        })
+      });
+      Map<String, dynamic> reqUser = allUsers.firstWhere((element) =>
+      element['uid'] == FirebaseAuth.instance.currentUser?.uid);
+
+      currentUser.displayName = reqUser['displayName'];
+      currentUser.bookmarks = reqUser['bookmarks'];
+      currentUser.defaultImage = reqUser['defaultImage'];
+      currentUser.uid = FirebaseAuth.instance.currentUser?.uid;
+      currentUser.email = emailController.text;
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      showErrorMessage(e.code);
+    }
+  }
+
   // error message if anything is invalid
   void showErrorMessage(String message) {
     showDialog(
@@ -201,7 +251,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   // google button
                   SquareTile(
-                      onTap: () => AuthService().signInWithGoogle(),
+                      onTap: () => signUserWithGoogle(),
                       imagePath: 'lib/assets/images/google-logo.png'),
 
                   const SizedBox(width: 25),
