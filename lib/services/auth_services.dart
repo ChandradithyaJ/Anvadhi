@@ -27,16 +27,14 @@ class AuthService {
       'email': FirebaseAuth.instance.currentUser?.email
     };
     String? uid = FirebaseAuth.instance.currentUser?.uid;
-    dynamic reqDoc =
-        await FirebaseFirestore.instance.collection('users').doc(uid).get();
-    if (!reqDoc.exists()) {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .set(user, SetOptions(merge: true));
+    dynamic reqDoc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    print(reqDoc);
+    if (!reqDoc.exists) {
+      print("req doc does not exist");
+      await FirebaseFirestore.instance.collection('users').doc(uid).set(user, SetOptions(merge: true));
     }
 
-    final usersRef = FirebaseFirestore.instance.collection('artForms');
+    final usersRef = FirebaseFirestore.instance.collection('users');
     List<Map<String, dynamic>> allUsers = [];
     await usersRef.get().then((snapshot) => {
           snapshot.docs.forEach((element) {
