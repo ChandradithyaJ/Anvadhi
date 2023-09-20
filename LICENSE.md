@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2023 Chandraditya Arpit Manurbhav Karthikeya Nandhavardhan
+Copyright (c) 2023 Chandradithya Arpit Manurbhav Karthikeya Nandhavardhan
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
